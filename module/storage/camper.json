@@ -1,1 +1,9 @@
-[]
+[
+    {
+        "Nombre": "Henry ",
+        "Apellido": "boada",
+        "Direccion": "cra 34",
+        "Acudiente": "",
+        "Estado": "riesgo"
+    }
+]
