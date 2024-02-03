@@ -1,5 +1,7 @@
+import json 
 from os import system
 import module.camper as camper 
+import module.trainer as trainer 
 
 
 def menu():
@@ -18,15 +20,5 @@ def menu():
     print("\t3. Registros ")
     print("\t4. Modulo de reportes")
 
-def save (): 
-    system ("clear")
-    print("""  
-      ______________________
-     /                     /
-     /    ADMIN CAMPER     /
-     /_____________________/
 
-
-
-""")
 
