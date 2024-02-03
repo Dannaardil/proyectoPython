@@ -1,5 +1,6 @@
 from os import system 
 import json
+from .validate import menuNoValid
 from .data import camper
 
 def save (): 
@@ -29,16 +30,25 @@ def save ():
 
 def search ():
     system ("clear")
-    print("""  
+    print(f"""  
       ______________________
      /                     /
      /    BUSCAR CAMPER    /
-     /_____________________/
-
-
-
-""")
+     /_____________________/""")
     
+    for i,val in enumerate(camper):
+        print(f"""
+________________________
+Codigo: {i}
+Nombre: {val.get('Nombre')}
+Apellido: {val.get('Apellido')}
+Edad: {val.get('Edad')}
+Genero: {val.get('Genero')}
+________________________
+ """)
+    return "The camper is available"
+
+   
 def edit():
     system ("clear")
     print("""  
@@ -80,4 +90,26 @@ _____________________________________________|
     elif(opc == 3):
             bandera = False
     return "camper edited succesfully"
-        
+
+def menu():
+     bandera = True
+     while(bandera):
+        print(""" 
+_______________________
+                
+////CRUD DEL CAMPER////
+_______________________
+""")
+        print("\t1. Registrar camper") 
+        print("\t2. Buscar camper")
+        print("\t3. Actualizar camper")
+        opc = int(input())
+        match(opc):
+             case 1: save()
+             case 2: search()
+             case 3: edit()
+             case 0: 
+                  system("clear")
+                  bandera = False
+             case _: menuNoValid(opc)
+                 

@@ -2,6 +2,7 @@ import json
 from os import system
 import module.camper as camper 
 import module.trainer as trainer 
+from module.validate import menuNoValid
 
 
 def menu():
