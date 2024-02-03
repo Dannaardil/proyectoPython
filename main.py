@@ -20,6 +20,7 @@ def menu():
     print("\t2. Info TRAINER ")
     print("\t3. Registros ")
     print("\t4. Modulo de reportes")
+    print("\t0.Salir")
 bandera=True
 while (bandera):
     menu()

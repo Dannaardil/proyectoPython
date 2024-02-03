@@ -1,9 +1,24 @@
 [
     {
-        "Nombre": "Henry ",
+        "Nombre": "henry",
         "Apellido": "boada",
-        "Direccion": "cra 34",
+        "Direccion": "cra 45",
+        "Telefono": [
+            {
+                "fijo": 67865759
+            },
+            {
+                "Celular": 3409836
+            },
+            {
+                "fijo": 498754
+            },
+            {
+                "Celular": 38475
+            }
+        ],
         "Acudiente": "",
-        "Estado": "riesgo"
+        "Estado": "",
+        "ID": "23087935"
     }
 ]

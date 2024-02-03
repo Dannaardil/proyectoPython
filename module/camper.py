@@ -16,9 +16,20 @@ def save ():
         "Nombre": input("Ingrese el nombre del camper\n"),
         "Apellido": input("Ingrese el apellido del camper\n")
         ,"Direccion": input("ingrese la direccion\n")
-        ,"Acudiente": input("acudiente (opcional)????")
+        , "Telefono": [
+          {
+            f"{'fijo' if (int(input('1. Fijo 0.Celular: '))==1) else 'Celular'}":   
+               int(input(f'Numero de contacto {x+1}: '))
+        }
+           for x in range(int(input("ingrese la cantidad de telefonos que tiene: ")))
+         ]
+         ,'Edad': input("ingrese la edad del camper\n")
+        
+
+            
          ,"Estado" : input("Ingrese el estado del camper\n") #v?
-    }
+         ,"ID": input("ingrese el numero de identifiacion del camper\n")
+    }    
     
     camper.append(info)
     with open ("module/storage/camper.json", "w") as f:
@@ -36,13 +47,14 @@ def search ():
     
     for i,val in enumerate(camper):
         print(f"""
-________________________
+______________________________________
 Codigo: {i}
 Nombre: {val.get('Nombre')}
 Apellido: {val.get('Apellido')}
-Edad: {val.get('Edad')}
-Genero: {val.get('Genero')}
-________________________
+Telefono : {val.get('Telefono')}
+Fijo : {val.get('Fijo')}
+numero de id: {val.get('ID')}
+_______________________________________
  """)
     return "The camper is available"
  
@@ -62,8 +74,9 @@ _____________________________________________
 codigo: {codigo}                             |
 Nombre: {camper[codigo].get('Nombre')}       |
 Apellido: {camper[codigo].get('Apellido')}   |
-Direccion: {camper[codigo].get('Direccion')} |      
-Estado: {camper[codigo].get('Estado')}       |
+Direccion: {camper[codigo].get('Direccion')} |
+Telefono: {camper[codigo].get('Telefono')}   |                   |
+Numero de id: {camper[codigo].get ('ID')}    |
 _____________________________________________|
 """)
     print("¿Este es el camper que deseas actualizar?")
@@ -75,9 +88,16 @@ _____________________________________________|
         info = {
             "Nombre": input("Ingrese el nombre del camper\n"),
             "Apellido": input("Ingrese el apellido del camper\n"),
-            "Direccion": input("ingrese la direccion\n")
+            "Telefono": [{
+            f"{'fijo' if (int(input('1. Fijo 0.Celular: '))==1) else 'Celular'}":   
+               int(input(f'Numero de contacto {x+1}: '))
+        }
+           for x in range(int(input("ingrese la cantidad de telefonos que tiene: ")))
+         ]
+            ,"Direccion": input("ingrese la direccion\n")
             ,"Acudiente": input("acudiente (opcional)????")
             ,"Estado" : input("Ingrese el estado del camper\n") #v?
+             ,"ID" : input("ingrese el numero de identificacion\n")
         }
         camper[codigo] = info
         with open("module/storage/camper.json", "w") as f:
@@ -94,19 +114,25 @@ def delete():
      while(bandera):
         system("clear")
         print("""
-        ***************************
-        * Eliminacion del camper  *
-        ***************************
+        xxxxxxxxxxxxxxxxxxxxxxxxxxxx
+        x  ELIMINACION DEL CAMPER  x
+        xxxxxxxxxxxxxxxxxxxxxxxxxxxx
         """)
         codigo = int(input("Ingrese el codigo del camper que deseas eliminar: "))
         print(f"""
-________________________
+______________________________________________
 Codigo: {codigo}
 Nombre: {camper[codigo].get('Nombre')}
 Apellido: {camper[codigo].get('Apellido')}
-Edad: {camper[codigo].get('Edad')}
-Genero: {camper[codigo].get('Genero')}
-________________________
+Direccion: {camper[codigo].get('Direccion')}
+Telefono: {camper[codigo].get('Telefono')}
+
+
+
+
+
+Numero de id: {camper[codigo].get('ID')}
+______________________________________________
         """)
         print("¿Este es el camper que deseas actualizar?")
         print("1. Si")
