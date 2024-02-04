@@ -1,24 +1,18 @@
 [
     {
-        "Nombre": "henry",
-        "Apellido": "boada",
-        "Direccion": "cra 45",
+        "Nombre": "Danna",
+        "Apellido": "Ardila",
+        "Direccion": "34",
         "Telefono": [
             {
-                "fijo": 67865759
+                "fijo": 649210
             },
             {
-                "Celular": 3409836
-            },
-            {
-                "fijo": 498754
-            },
-            {
-                "Celular": 38475
+                "Celular": 3002941691
             }
         ],
-        "Acudiente": "",
-        "Estado": "",
-        "ID": "23087935"
+        "Edad": "14",
+        "Estado": "inscrito",
+        "ID": "1098657067"
     }
 ]

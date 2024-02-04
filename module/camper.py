@@ -52,7 +52,7 @@ Codigo: {i}
 Nombre: {val.get('Nombre')}
 Apellido: {val.get('Apellido')}
 Telefono : {val.get('Telefono')}
-Fijo : {val.get('Fijo')}
+Estado: {val.get('Estado')}
 numero de id: {val.get('ID')}
 _______________________________________
  """)
@@ -75,7 +75,8 @@ codigo: {codigo}                             |
 Nombre: {camper[codigo].get('Nombre')}       |
 Apellido: {camper[codigo].get('Apellido')}   |
 Direccion: {camper[codigo].get('Direccion')} |
-Telefono: {camper[codigo].get('Telefono')}   |                   |
+Telefono: {camper[codigo].get('Telefono')}
+Estado:   {camper[codigo].get('Estado ')}          |                   |
 Numero de id: {camper[codigo].get ('ID')}    |
 _____________________________________________|
 """)
@@ -126,11 +127,6 @@ Nombre: {camper[codigo].get('Nombre')}
 Apellido: {camper[codigo].get('Apellido')}
 Direccion: {camper[codigo].get('Direccion')}
 Telefono: {camper[codigo].get('Telefono')}
-
-
-
-
-
 Numero de id: {camper[codigo].get('ID')}
 ______________________________________________
         """)

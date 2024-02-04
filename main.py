@@ -1,11 +1,13 @@
 import json 
 from os import system
 import module.camper as camper 
-import module.trainer as trainer 
+import module.registros as registros
+import module.trainer as trainer
 from module.validate import menuNoValid
 
 
 def menu():
+      
     print("""
           BIENVENIDO A... 
           
@@ -39,6 +41,10 @@ while (bandera):
               f.close()
               system("clear")
               trainer.menu()
+        case 3:
+            with open ("module/storage/registroSandbox.json", "r") as f:
+                registros.admision = json.loads(f.read())
+                       
         case 0:
             system("clear")
             bandera = False
