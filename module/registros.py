@@ -1,16 +1,51 @@
-import json 
 from os import system
+import json
+import module.camper as camper
 from module.data import resultadoSandbox
 from module.validate import menuNoValid
 
 
-def admision (): 
+def admision ():
     
-    pruebaLogica = int(input("ingrese la nota de la prueba en el area de Logica\n"))
-    pruebaProgramacion = int(input("Ingrese la nota de la prueba em el area de programacion\n"))
-    promedioSandbox = pruebaLogica + pruebaProgramacion/2
-    if promedioSandbox >= 60:
-        Estado = "Inscrito"
+    print("""  
+          
+         ______________________________
+        |                              |
+      |      RESULTADOS PRUEBA DE    |
+       |          ADMISION             |
+      |_______________________________|
+    
+    
+          """)
+    camper.edit()
+    # pruebadmision = { 'pruebaLogica':input("ingrese la nota de la prueba de logica\n"), 
+                 
+    #                'pruebaProgramacion': input('ingrese la nota de la prueba de programacion\n')}
+    # promedio =  sum(pruebadmision.values)/2
+    # if promedio>=60:
+    #         camper.info[5] = "Inscrito"
+                
+    
+def notas():
+    print("notas")
+    
+def areas():
+    print("areas")
+    
+def matricula():
+    print("matriculas")
+
+def areas():
+    print("areas")
+
+def rutas():
+    print("rutas")
+
+def modulos():
+    print("modulos")
+    
+
+            
          
        
     

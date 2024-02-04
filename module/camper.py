@@ -23,11 +23,8 @@ def save ():
         }
            for x in range(int(input("ingrese la cantidad de telefonos que tiene: ")))
          ]
-         ,'Edad': input("ingrese la edad del camper\n")
-        
-
-            
-         ,"Estado" : input("Ingrese el estado del camper\n") #v?
+         ,'Edad': input("ingrese la edad del camper\n"), 
+         'Estado': "Preinscrito"
          ,"ID": input("ingrese el numero de identifiacion del camper\n")
     }    
     

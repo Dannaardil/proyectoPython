@@ -42,8 +42,11 @@ while (bandera):
               system("clear")
               trainer.menu()
         case 3:
-            with open ("module/storage/registroSandbox.json", "r") as f:
-                registros.admision = json.loads(f.read())
+            with open ("module/storage/registros.json", "r") as f:
+                registros.registros = json.loads(f.read())
+                f.close
+               
+                registros.menu()
                        
         case 0:
             system("clear")
