@@ -11,23 +11,52 @@ def save ():
      /                     /
      /   GUARDAR  CAMPER   /
      /_____________________/
+     
     """)
+    Edad=  int(input("ingrese la edad del camper\n"))
+    acudiente  = ''
+    if Edad<16:
+        return print("""
+                     
+    X -----------------------------X
+    X  NO PUEDE INGRESAR, NO TIENE X
+    X      LA EDAD SUFICIENTE      X
+    X -----------------------------X
+                     
+                     
+                     """)
+    elif Edad> 28:
+        return print(" Exedes el limite de edad ")
+    
+    elif Edad >16 and Edad<18:
+        acudiente= input("Ingrese el nombre de su acudiente\n")
+    elif Edad>18:
+        exit
+  
+        
+        
     info = {
         "Nombre": input("Ingrese el nombre del camper\n"),
         "Apellido": input("Ingrese el apellido del camper\n")
         ,"Direccion": input("ingrese la direccion\n")
         , "Telefono": [
           {
-            f"{'fijo' if (int(input('1. Fijo 0.Celular: '))==1) else 'Celular'}":   
+            f"{'fijo' if (int(input('1. Fijo 2.Celular: '))==1) else 'Celular'}":   
                int(input(f'Numero de contacto {x+1}: '))
         }
            for x in range(int(input("ingrese la cantidad de telefonos que tiene: ")))
-         ]
-         ,'Edad': input("ingrese la edad del camper\n"), 
+         ], 'Acudiente': acudiente,
+          
+         
          'Estado': "Preinscrito"
          ,"ID": input("ingrese el numero de identifiacion del camper\n")
     }    
     
+  
+    
+    
+    if Edad<16:
+        print()
     camper.append(info)
     with open ("module/storage/camper.json", "w") as f:
         data = json.dumps(camper, indent=4)
@@ -41,14 +70,21 @@ def search ():
      /                     /
      /    BUSCAR CAMPER    /
      /_____________________/""")
-    
+ 
+    for i, val in enumerate(camper):
+        telefonos = " "
+        for valor in val.get('Telefono'):
+            for key, value in valor.items():
+                telefonos += f" {key} = {value}"
+         
+            
     for i,val in enumerate(camper):
         print(f"""
 ______________________________________
 Codigo: {i}
 Nombre: {val.get('Nombre')}
 Apellido: {val.get('Apellido')}
-Telefono : {val.get('Telefono')}
+Telefono : {telefonos}
 Estado: {val.get('Estado')}
 numero de id: {val.get('ID')}
 _______________________________________
@@ -93,7 +129,7 @@ _____________________________________________|
            for x in range(int(input("ingrese la cantidad de telefonos que tiene: ")))
          ]
             ,"Direccion": input("ingrese la direccion\n")
-            ,"Acudiente": input("acudiente (opcional)????")
+            ,"Acudiente": input("ingrese acudiente")
             ,"Estado" : input("Ingrese el estado del camper\n") #v?
              ,"ID" : input("ingrese el numero de identificacion\n")
         }
@@ -146,6 +182,7 @@ ______________________________________________
 def menu():
      bandera = True
      while(bandera):
+   
         print(""" 
 _______________________
                 
@@ -157,7 +194,12 @@ _______________________
         print("\t3. Actualizar camper")
         print("\t4. Eliminar camper")
         print("\t0. salir ")
-        opc = int(input())
+        try: 
+          opc = int(input())
+        except ValueError:
+            system("clear")
+            continue
+    
         match(opc):
              case 1: save()
              case 2: search()

@@ -26,7 +26,11 @@ def menu():
 bandera=True
 while (bandera):
     menu()
-    opc = int(input())
+    try: 
+      opc = int(input())
+    except ValueError:
+        continue
+   
     match(opc):
         case 1:
             
