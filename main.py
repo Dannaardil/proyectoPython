@@ -1,10 +1,9 @@
 import json 
 from os import system
 import module.camper as camper 
-import module.rutas as rutas
 import module.trainer as trainer
 from module.validate import menuNoValid
-import module.rutas as rutas
+import module.rutas as RUTA
 
 def menuRegistros ():
     bandera = True 
@@ -24,11 +23,12 @@ def menuRegistros ():
            case 3: print("no")
            case 4: 
                with open("module/storage/ruta.json", "r") as f:
-                rutas.rutas = json.loads(f.read())
+                RUTA.RUTA= json.loads(f.read())
                 f.close()
                 
                system("clear")
-               rutas.rutas()
+               
+               RUTA.rutasMenu()
            case 5:print("no")
            case 0:
                system("clear")
