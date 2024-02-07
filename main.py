@@ -1,9 +1,39 @@
 import json 
 from os import system
 import module.camper as camper 
-import module.registros as registros
+import module.rutas as rutas
 import module.trainer as trainer
 from module.validate import menuNoValid
+import module.rutas as rutas
+
+def menuRegistros ():
+    bandera = True 
+    while (bandera):
+    
+       print("\t1.Registro de notas ")
+       print("\t2.Registro resultados de admision")
+       print("\t3.Registro de areas ")
+       print("\t4.Registro de rutas ")
+       print("\t5.Registro de modulos ")
+       print("\t6.Registro de matricula")
+       print("\t0.Salir")
+       opc = int(input())
+       match(opc):
+           case 1: print("no")
+           case 2:print("no")
+           case 3: print("no")
+           case 4: 
+               with open("module/storage/ruta.json", "r") as f:
+                rutas.rutas = json.loads(f.read())
+                f.close()
+                
+               system("clear")
+               rutas.rutas()
+           case 5:print("no")
+           case 0:
+               system("clear")
+               bandera = False
+           case _: menuNoValid(opc)
 
 
 def menu():
@@ -46,17 +76,14 @@ while (bandera):
               system("clear")
               trainer.menu()
         case 3:
-            with open ("module/storage/registros.json", "r") as f:
-                registros.registros = json.loads(f.read())
-                f.close
-               
-                registros.menu()
+            menuRegistros()
                        
         case 0:
             system("clear")
             bandera = False
         case _:
             menuNoValid(opc)
+
 
 
 
