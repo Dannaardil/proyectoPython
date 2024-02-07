@@ -31,8 +31,6 @@ def admision ():
 def notas():
     print("notas")
     
-def areas():
-    print("areas")
     
 def matricula():
     print("matriculas")
@@ -53,7 +51,7 @@ def guardarRuta ():
         
         
     info = { 
-            'Ruta': input("Ingrese el nombre de la ruta\n")
+            'Ruta': input("Ingrese el nombre de la ruta\n"),
        
     }    
     with open ("module/storage/ruta.json", "w") as f:
@@ -69,7 +67,7 @@ def buscarRuta():
     print(f"""  
       ______________________
      /                     /
-     /    BUSCAR CAMPER    /
+     /    BUSCAR RUTA      /
      /_____________________/""")
 
             
@@ -77,11 +75,45 @@ def buscarRuta():
         print(f"""
 ______________________________________
 Codigo: {i}
-Nombre: {val.get('Ruta')}
+Nombre de la ruta : {val.get('Ruta')}
 _______________________________________
  """)
     return "The camper is available"
  
+def editarRuta():
+    system ("clear")
+    print("""  
+      ______________________
+     /                     /
+     /    EDITAR RUTA      /
+     /_____________________/
+""")
+    codigo = int(input("Ingrese el codigo de la ruta que desea editar:\n"))
+    print(f"""
+_____________________________________________
+                                             |
+codigo: {codigo}                             |
+Nombre: {ruta[codigo].get('Nombre')}       |
+_____________________________________________|
+""")
+    print("¿Esta es la ruta que deseas actualizar?")
+    print("1. Si")
+    print("2. No")
+    print("3. Salir")   
+    opc = int(input())
+    if (opc == 1): 
+        info = {
+        "Nombre": input("Ingrese el nombre de la ruta\n")}
+            
+        ruta[codigo] = info
+        with open("module/storage/ruta.json", "w") as f:
+                data = json.dumps(ruta, indent=4)
+                f.write(data)
+                f.close()
+        bandera = False
+    elif(opc == 3):
+            bandera = False
+    return "ruta edited succesfully"
 
 def eliminarRuta():
      bandera = True
@@ -140,7 +172,7 @@ def rutasMenu():
     
      match(opc):
              case 1:guardarRuta()
-             case 2: print("NO")
+             case 2: editarRuta()
              case 3: eliminarRuta()
              case 4: buscarRuta()
              case 0: 

@@ -2,6 +2,7 @@ from os import system
 import json
 from module.validate import menuNoValid
 from module.data import modulo as modulo
+from module.data import temario as temario
 
 def guardarModulo():
     print("""  
@@ -16,7 +17,8 @@ def guardarModulo():
         
         
     info = { 
-            'Modulo': input("Ingrese el nombre de el modulo\n")
+            'Modulo': input("Ingrese el nombre de el modulo\n"),
+            'Temario': input("Ingrese el temario dle modulo\n")
        
     }    
     with open ("module/storage/modulo.json", "w") as f:
@@ -26,6 +28,7 @@ def guardarModulo():
     modulo.append(info)
 
 def buscarModulo():
+
     system ("clear")
     print(f"""  
       ______________________
@@ -38,10 +41,49 @@ def buscarModulo():
         print(f"""
 ______________________________________
 Codigo: {i}
-Nombre: {val.get('Modulo')}
+Modulo: {val.get('Modulo')}
+Temario: {val.get('Temario')}
 _______________________________________
  """)
     return "The module is available" 
+
+def editarModulo():
+    system ("clear")
+    print("""  
+      ______________________
+     /                     /
+     /    EDITAR MODULO    /
+     /_____________________/
+""")
+    codigo = int(input("Ingrese el codigo del modulo que desea editar:\n"))
+    print(f"""
+_____________________________________________
+                                             |
+codigo: {codigo}                             |
+Nombre: {modulo[codigo].get('modulo')} 
+temario: {modulo[codigo].get('temario')}     |
+   |
+_____________________________________________|
+""")
+    print("¿Este es el camper que deseas actualizar?")
+    print("1. Si")
+    print("2. No")
+    print("3. Salir")   
+    opc = int(input())
+    if (opc == 1): 
+        info = {
+           'Modulo': input("Ingrese el nombre dle modulo\n"),
+            'Temario': input("Ingrese el temario\n")       
+                           }
+        modulo[codigo] = info
+        with open("module/storage/modulo.json", "w") as f:
+                data = json.dumps(modulo, indent=4)
+                f.write(data)
+                f.close()
+        bandera = False
+    elif(opc == 3):
+            bandera = False
+    return "modulo edited succesfully"
 def eliminarModulo(): 
     bandera = True
     while(bandera):
@@ -56,6 +98,7 @@ def eliminarModulo():
 ______________________________________________
 Codigo: {codigo}
 Nombre De la ruta: {modulo}
+Temario: {temario}
 ______________________________________________
         """)
         print("¿Esta es la ruta que deseas eliminar?")
@@ -86,18 +129,21 @@ def modulos():
           
           """)
     
-    print("\t1.Guardar Modulo")
-    print("\t2.Editar modulo")
-    print("\t3.Buscar Modulo")
-    print("\t4.Eliminar Modulo")
-    try: 
+     print("\t1.Guardar Modulo")
+     print("\t2.Editar modulo")
+     print("\t3.Buscar Modulo")
+     print("\t4.Eliminar Modulo")
+     try: 
         opc = int(input())
-    except ValueError:
-     system("clear")
-    match(opc):
-             case 1: print("no")
+     except ValueError:
+      system("clear")
+     match(opc):
+             case 1: guardarModulo()
+             case 2: editarModulo()
+             case 3: buscarModulo()
+             case 4 : eliminarModulo()
              case 0: 
                   system("clear")
-                  bandera = False
+    bandera = False
     
     
