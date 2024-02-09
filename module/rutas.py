@@ -6,28 +6,6 @@ from module.validate import menuNoValid
 from module.data import ruta as ruta
 import module.modulos as modulos
 
-
-def admision ():
-    
-    print("""  
-          
-         ______________________________
-        |                              |
-      |      RESULTADOS PRUEBA DE    |
-       |          ADMISION             |
-      |_______________________________|
-    
-    
-          """)
-    camper.edit()
-    # pruebadmision = { 'pruebaLogica':input("ingrese la nota de la prueba de logica\n"), 
-                 
-    #                'pruebaProgramacion': input('ingrese la nota de la prueba de programacion\n')}
-    # promedio =  sum(pruebadmision.values)/2
-    # if promedio>=60:
-    #         camper.info[5] = "Inscrito"
-                
-    
 def notas():
     print("notas")
     

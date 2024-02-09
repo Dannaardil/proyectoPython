@@ -2,6 +2,7 @@ from os import system
 import json
 from .validate import menuNoValid
 from .data import camper
+from .data import estados as estados
 
 def save (): 
 
@@ -28,9 +29,9 @@ def save ():
     elif Edad> 28:
         return print(" Exedes el limite de edad ")
     
-    elif Edad >16 and Edad<18:
-        acudiente= input("Ingrese el nombre de su acudiente\n")
-    elif Edad>18:
+    elif Edad >=16 and Edad<18:
+        acudiente= input("Ingrese el nombre completo de su acudiente\n")
+    elif Edad>=18:
         exit
   
         
@@ -48,8 +49,8 @@ def save ():
          ], 'Acudiente': acudiente,
           
          
-         'Estado': "Preinscrito"
-         ,"ID": input("ingrese el numero de identifiacion del camper\n")
+         'Estado': input("Elija el estado del camper:\n\t"+"\t".join([f"{estados.index(i)+1}. {i}\n" for i in (estados)]))
+         ,"ID": input("ingrese el numero de identificacion del camper\n")
     }    
     
   
@@ -85,6 +86,7 @@ Codigo: {i}
 Nombre: {val.get('Nombre')}
 Apellido: {val.get('Apellido')}
 Telefono : {telefonos}
+Acudiente: {val.get('Acudiente')}
 Estado: {val.get('Estado')}
 numero de id: {val.get('ID')}
 _______________________________________
@@ -93,6 +95,8 @@ _______________________________________
  
 
 def edit():
+   
+    
     system ("clear")
     print("""  
       ______________________
@@ -100,6 +104,11 @@ def edit():
      /    EDITAR CAMPER    /
      /_____________________/
 """)
+    for i, val in enumerate(camper):
+        telefonos = " "
+        for valor in val.get('Telefono'):
+            for key, value in valor.items():
+                telefonos += f" {key} = {value}"
     codigo = int(input("Ingrese el codigo del camper que desea editar:\n"))
     print(f"""
 _____________________________________________
@@ -108,8 +117,8 @@ codigo: {codigo}                             |
 Nombre: {camper[codigo].get('Nombre')}       |
 Apellido: {camper[codigo].get('Apellido')}   |
 Direccion: {camper[codigo].get('Direccion')} |
-Telefono: {camper[codigo].get('Telefono')}
-Estado:   {camper[codigo].get('Estado ')}          |                   |
+Telefono: {telefonos}                        |
+Estado:   {camper[codigo].get('Estado ')}    |                  
 Numero de id: {camper[codigo].get ('ID')}    |
 _____________________________________________|
 """)
@@ -119,28 +128,49 @@ _____________________________________________|
     print("3. Salir")   
     opc = int(input())
     if (opc == 1): 
-        info = {
-            "Nombre": input("Ingrese el nombre del camper\n"),
-            "Apellido": input("Ingrese el apellido del camper\n"),
-            "Telefono": [{
-            f"{'fijo' if (int(input('1. Fijo 0.Celular: '))==1) else 'Celular'}":   
+          Edad=  int(input("ingrese la edad del camper\n"))
+    acudiente  = ''
+    if Edad<16:
+        return print("""
+                     
+    X -----------------------------X
+    X  NO PUEDE INGRESAR, NO TIENE X
+    X      LA EDAD SUFICIENTE      X
+    X -----------------------------X
+                     
+                     
+                     """)
+    elif Edad> 28:
+        return print(" Exedes el limite de edad ")
+    
+    elif Edad >=16 and Edad<18:
+        acudiente= input("Ingrese el nombre completo de su acudiente\n")
+    elif Edad>=18:
+        exit
+  
+        
+        
+    info = {
+        "Nombre": input("Ingrese el nombre del camper\n"),
+        "Apellido": input("Ingrese el apellido del camper\n")
+        ,"Direccion": input("ingrese la direccion\n")
+        , "Telefono": [
+          {
+            f"{'fijo' if (int(input('1. Fijo 2.Celular: '))==1) else 'Celular'}":   
                int(input(f'Numero de contacto {x+1}: '))
         }
            for x in range(int(input("ingrese la cantidad de telefonos que tiene: ")))
-         ]
-            ,"Direccion": input("ingrese la direccion\n")
-            ,"Acudiente": input("ingrese acudiente")
-            ,"Estado" : input("Ingrese el estado del camper\n") #v?
-             ,"ID" : input("ingrese el numero de identificacion\n")
-        }
-        camper[codigo] = info
-        with open("module/storage/camper.json", "w") as f:
+         ], 'Acudiente': acudiente,
+          
+         
+         'Estado': input("Elija el estado del camper:\n\t"+"\t".join([f"{estados.index(i)+1}. {i}\n" for i in (estados)]))
+         ,"ID": input("ingrese el numero de identificacion del camper\n")}
+            
+    camper[codigo] = info
+    with open("module/storage/camper.json", "w") as f:
                 data = json.dumps(camper, indent=4)
                 f.write(data)
                 f.close()
-        bandera = False
-    elif(opc == 3):
-            bandera = False
     return "camper edited succesfully"
 
 def delete():
@@ -152,6 +182,11 @@ def delete():
         x  ELIMINACION DEL CAMPER  x
         xxxxxxxxxxxxxxxxxxxxxxxxxxxx
         """)
+        for i, val in enumerate(camper):
+         telefonos = " "
+        for valor in val.get('Telefono'):
+            for key, value in valor.items():
+                telefonos += f" {key} = {value}"
         codigo = int(input("Ingrese el codigo del camper que deseas eliminar: "))
         print(f"""
 ______________________________________________
@@ -159,11 +194,12 @@ Codigo: {codigo}
 Nombre: {camper[codigo].get('Nombre')}
 Apellido: {camper[codigo].get('Apellido')}
 Direccion: {camper[codigo].get('Direccion')}
-Telefono: {camper[codigo].get('Telefono')}
+Aduciente: {camper[codigo].get('Acudiente')}
+Telefono: {telefonos}
 Numero de id: {camper[codigo].get('ID')}
 ______________________________________________
         """)
-        print("¿Este es el camper que deseas actualizar?")
+        print("¿Este es el camper que deseas eliminar?")
         print("1. Si")
         print("2. No")
         print("3. Salir")
@@ -176,6 +212,11 @@ ______________________________________________
                 f.close()
             bandera = False
         elif(opc == 3):
+            bandera = False
+        else:
+            delete()
+            
+            
             bandera = False
      return "Camper deleted"
 

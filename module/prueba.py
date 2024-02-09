@@ -30,8 +30,8 @@ def registrarResultados():
         f.close()
     bandera =False
     notaTeorica.append(info)
-suma =  notaTeorica[0] + notaTeorica[1]
-promedio = suma/2
+
+
 def listarResultados():
     system ("clear")
     print(f"""  
@@ -48,7 +48,7 @@ ______________________________________
 
 Nota practica: {val.get('notaTeorica')}
 Nota practica : {val.get('notaPractica')}
-promedio: {val.get(promedio)}
+
 _______________________________________
  """)
     return "The camper is available"

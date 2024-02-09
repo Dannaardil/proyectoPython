@@ -1,18 +1,1 @@
-[
-    {
-        "Nombre": "Danna",
-        "Apellido": "Ardila",
-        "Direccion": "34",
-        "Telefono": [
-            {
-                "fijo": 649210
-            },
-            {
-                "Celular": 3002941691
-            }
-        ],
-        "Edad": "14",
-        "Estado": "inscrito",
-        "ID": "1098657067"
-    }
-]
+[]
