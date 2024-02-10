@@ -47,8 +47,7 @@ def save ():
         }
            for x in range(int(input("ingrese la cantidad de telefonos que tiene: ")))
          ], 'Acudiente': acudiente,
-          
-         
+             'PruebaPromedio': None,
          'Estado': input("Elija el estado del camper:\n\t"+"\t".join([f"{estados.index(i)+1}. {i}\n" for i in (estados)]))
          ,"ID": input("ingrese el numero de identificacion del camper\n")
     }    

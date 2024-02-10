@@ -1,1 +1,17 @@
-[]
+[
+   
+    {
+        "Nombre": "danna",
+        "Apellido": "a",
+        "Direccion": "cra 30",
+        "Telefono": [
+            {
+                "fijo": 48745
+            }
+        ],
+        "Acudiente": "",
+        "PruebaPromedio": null,
+        "Estado": "6",
+        "ID": "1098657067"
+    }
+]

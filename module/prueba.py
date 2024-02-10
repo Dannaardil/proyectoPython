@@ -1,37 +1,10 @@
 import json
 from os import system 
-from module.data import notaTeorica , notaPractica
+from module.data import prueba as prueba
 from .validate import menuNoValid
 import module.camper as camper
-def registrarResultados():
-    bandera = True
-    while(bandera):
-     print("""  
-      ______________________
-     /                     /
-     /   REGISTRAR  NOTAS  /
-     /_____________________/
-     
-    """)
-    
-   
-        
-     
-    info = { 
-            'notaTeorica': int(input("Ingrese la nota teorica\n")),
-            'notaPractica': int(input("Ingrese la nota practica\n"))
-       
-    }   
 
-
-    with open ("module/storage/prueba.json", "w") as f:
-        data = json.dumps(info, indent=4)
-        f.write(data)
-        f.close()
-    bandera =False
-    notaTeorica.append(info)
-
-
+ 
 def listarResultados():
     system ("clear")
     print(f"""  
@@ -42,7 +15,7 @@ def listarResultados():
           """)
 
             
-    for i,val in enumerate(notaTeorica):
+    for i,val in enumerate(PromedioPrueba):
         print(f"""
 ______________________________________
 
@@ -52,7 +25,7 @@ Nota practica : {val.get('notaPractica')}
 _______________________________________
  """)
     return "The camper is available"
-
+   
 def editarResultados():
     system ("clear")
     print("""  

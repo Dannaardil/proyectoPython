@@ -5,7 +5,7 @@ import module.trainer as trainer
 from module.validate import menuNoValid
 import module.rutas as RUTA
 import module.modulos as modulos
-import module.prueba as prueba 
+import module.prueba as Prueba
 def menuRegistros ():
     bandera = True 
     while (bandera):
@@ -20,7 +20,7 @@ def menuRegistros ():
        opc = int(input())
        match(opc):
            case 1: print("no")
-           case 2:prueba.menuPrueba()
+           case 2:Prueba.menuPrueba()
            case 3: print("no")
            case 4: 
                with open("module/storage/ruta.json", "r") as f:

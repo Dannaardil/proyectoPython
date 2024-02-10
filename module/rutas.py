@@ -5,6 +5,7 @@ from module.data import resultadoSandbox
 from module.validate import menuNoValid
 from module.data import ruta as ruta
 import module.modulos as modulos
+import module.prueba as prueba
 
 def notas():
     print("notas")
@@ -71,7 +72,7 @@ def editarRuta():
 _____________________________________________
                                              |
 codigo: {codigo}                             |
-Nombre: {ruta[codigo].get('Nombre')}       |
+Nombre: {ruta[codigo].get('Ruta')}           |
 _____________________________________________|
 """)
     print("¿Esta es la ruta que deseas actualizar?")
@@ -81,11 +82,11 @@ _____________________________________________|
     opc = int(input())
     if (opc == 1): 
         info = {
-        "Nombre": input("Ingrese el nombre de la ruta\n")}
+        "Ruta": input("Ingrese el nombre de la ruta\n")}
             
         ruta[codigo] = info
         with open("module/storage/ruta.json", "w") as f:
-                data = json.dumps(ruta, indent=4)
+                data = json.dumps(info, indent=4)
                 f.write(data)
                 f.close()
         bandera = False
@@ -106,7 +107,7 @@ def eliminarRuta():
         print(f"""
 ______________________________________________
 Codigo: {codigo}
-Nombre De la ruta: {ruta}
+Nombre De la ruta: {ruta[codigo].get('Ruta')}  
 ______________________________________________
         """)
         print("¿Esta es la ruta que deseas eliminar?")
@@ -181,10 +182,10 @@ def menu ():
        opc = int(input())
        match(opc):
            case 1: notas()
-           case 2: admision()
+           case 2: prueba.menuPrueba()
            case 3: areas()
            case 4: rutasMenu()
-           case 5: modulos()
+           case 5: modulos.modulos()
            case 6: matricula()
            case 0:
                system("clear")
