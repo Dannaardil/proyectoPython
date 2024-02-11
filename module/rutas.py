@@ -7,15 +7,15 @@ from module.data import ruta as ruta
 import module.modulos as modulos
 import module.prueba as prueba
 
-def notas():
-    print("notas")
+# def notas():
+#     print("notas")
     
     
-def matricula():
-    print("matriculas")
+# def matricula():
+#     print("matriculas")
 
-def areas():
-    print("areas")
+# def areas():
+#     print("areas")
 def guardarRuta ():
     system ("clear")
     print("""  
@@ -70,10 +70,10 @@ def editarRuta():
     codigo = int(input("Ingrese el codigo de la ruta que desea editar:\n"))
     print(f"""
 _____________________________________________
-                                             |
-codigo: {codigo}                             |
-Nombre: {ruta[codigo].get('Ruta')}           |
-_____________________________________________|
+                                            
+codigo: {codigo}                             
+Nombre: {ruta[codigo].get('Ruta')}           
+_____________________________________________
 """)
     print("¿Esta es la ruta que deseas actualizar?")
     print("1. Si")

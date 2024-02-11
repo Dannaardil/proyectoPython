@@ -4,7 +4,31 @@ from module.data import prueba as prueba
 from .validate import menuNoValid
 import module.camper as camper
 
- 
+def guardarResultados():
+    print(""" 
+          
+          
+        ______________________
+         
+         REGISTRAR RESULTADOS 
+        ______________________
+        
+        
+          
+          """)
+    info = {
+        
+        'notaTeorica': input("ingrese la nota de la prueba teorica: "), 
+        'notaPractica': input("ingrese la nota de la prueba practica: ")
+    }
+    
+    with open ("module/storage/prueba.json", "w") as f:
+        data = json.dumps(info, indent=4)
+        f.write(data)
+        f.close()
+    modulo.append(info) 
+    
+    
 def listarResultados():
     system ("clear")
     print(f"""  
@@ -89,7 +113,7 @@ ________________________________________
             continue
     
         match(opc):
-             case 1: registrarResultados()
+             case 1: guardarResultados()
              case 2: listarResultados()
              case 0: 
                   system("clear")
