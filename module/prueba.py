@@ -16,17 +16,22 @@ def guardarResultados():
         
           
           """)
+    notaTeorica = float(input("ingrese la nota de la prueba:\n"))
+    notaPractica = float(input("ingrese la nota practica:\n"))
+    promedio = (notaPractica+notaTeorica)/2
     info = {
         
-        'notaTeorica': input("ingrese la nota de la prueba teorica: "), 
-        'notaPractica': input("ingrese la nota de la prueba practica: ")
+        'notaTeorica': notaPractica , 
+        'notaPractica': notaTeorica,
+        'promedio': promedio
     }
+    
     
     with open ("module/storage/prueba.json", "w") as f:
         data = json.dumps(info, indent=4)
         f.write(data)
         f.close()
-    modulo.append(info) 
+    prueba.append(info) 
     
     
 def listarResultados():
@@ -39,12 +44,13 @@ def listarResultados():
           """)
 
             
-    for i,val in enumerate(PromedioPrueba):
+    for i,val in enumerate(prueba):
         print(f"""
 ______________________________________
 
 Nota practica: {val.get('notaTeorica')}
 Nota practica : {val.get('notaPractica')}
+promedio: {val.get('promedio')}
 
 _______________________________________
  """)

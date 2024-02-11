@@ -1,4 +1,5 @@
 {
-    "notaTeorica": "40",
-    "notaPractica": "70"
+    "notaTeorica": 60.0,
+    "notaPractica": 50.0,
+    "promedio": 55.0
 }

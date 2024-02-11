@@ -4,8 +4,11 @@ from .validate import menuNoValid
 from .data import camper
 from .data import estados as estados
 
-def save (): 
 
+
+  
+def save (): 
+   
     system ("clear")
     print("""  
       ______________________
@@ -47,7 +50,7 @@ def save ():
         }
            for x in range(int(input("ingrese la cantidad de telefonos que tiene: ")))
          ], 'Acudiente': acudiente,
-             'PruebaPromedio': None,
+             'promedio': promedio,
          'Estado': input("Elija el estado del camper:\n\t"+"\t".join([f"{estados.index(i)+1}. {i}\n" for i in (estados)]))
          ,"ID": input("ingrese el numero de identificacion del camper\n")
     }    
