@@ -4,6 +4,12 @@ from module.validate import menuNoValid
 from module.data import modulo as modulo
 from module.data import temario as temario
 
+path = "module/storage/"
+def carga():
+    with open(path+"modulo.json", "r") as f:
+        return json.loads(f.read())
+       
+
 def guardarModulo():
     print("""  
       ______________________
@@ -17,10 +23,11 @@ def guardarModulo():
         
         
     info = { 
-            'Modulo': input("Ingrese el nombre de el modulo\n"),
-            'Temario': input("Ingrese el temario dle modulo\n")
-       
-    }    
+            "codigo": input("ingrese el codigo del modulo"),
+        "nombre_modulo": input("ingrese el nombre del modulo"),
+        "temario": input("ingrese el temario"),
+        "prioridad": input("ingrese la prioridad")
+        }    
     with open ("module/storage/modulo.json", "w") as f:
         data = json.dumps(info, indent=4)
         f.write(data)
@@ -40,9 +47,9 @@ def buscarModulo():
     for i,val in enumerate(modulo):
         print(f"""
 ______________________________________
-Codigo: {i}
-Modulo: {val.get('Modulo')}
-Temario: {val.get('Temario')}
+Codigo: {val.get('codigo')}
+Modulo: {val.get('nombre_modulo')}
+prioridad:{val.get('prioridad')}
 _______________________________________
  """)
     return "The module is available" 
@@ -133,6 +140,7 @@ def modulos():
      print("\t2.Editar modulo")
      print("\t3.Buscar Modulo")
      print("\t4.Eliminar Modulo")
+     print("\t0.Salir")
      try: 
         opc = int(input())
      except ValueError:
@@ -144,6 +152,7 @@ def modulos():
              case 4 : eliminarModulo()
              case 0: 
                   system("clear")
-    bandera = False
+                  bandera = False
+    
     
     

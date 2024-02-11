@@ -4,8 +4,42 @@ import module.camper as camper
 import module.trainer as trainer
 from module.validate import menuNoValid
 import module.rutas as RUTA
-import module.modulos as modulos
+import module.modulos as MODULOS
 import module.prueba as Prueba
+from module.data import modulo, ruta
+
+rutas = RUTA.carga()
+modulos = MODULOS.carga()
+
+def plantilla(data):
+    lista = []
+    for i,val in enumerate(data):
+        lista.append(f"\n\t\t{i+1} - {val}")
+    return "".join(lista)
+
+def asignarModulos():
+    # Temario: {"".join([f"{i} - {val}" for i,val in enumerate(val.get("temario"))])}
+    selecion = set()
+    nuevaLista = []
+    while(True):
+        for val in modulos:
+            print(f"""
+            ________________
+            Codigo: {val.get("codigo")}
+            Nombre: {val.get("nombre_modulo")}
+            Prioridad: {val.get("prioridad")}
+            Temario: {plantilla(val.get("temario"))}
+            ________________
+            """)
+
+        selecion.add(input("¿Selecione el modulo que deseas ingresando el codigo?\n"))
+        if(not int(input("¿Deseas agregar otro modulo?\n1.SI\n0.NO\n"))):
+            for i in selecion:
+                for val in modulos:
+                   if(val.get("codigo") == i):
+                        nuevaLista.append(val)
+            break
+
 def menuRegistros ():
     bandera = True 
     while (bandera):
@@ -29,12 +63,62 @@ def menuRegistros ():
                 
                system("clear")
                
-               RUTA.rutasMenu()
-           case 5:modulos.modulos()
+               menuRutas()
+           case 5:
+               MODULOS.modulos()
            case 0:
                system("clear")
                bandera = False
            case _: menuNoValid(opc)
+
+def menuRutas():
+    bandera = True
+    while(bandera):
+     print("""
+       ________________________   
+          
+        REGISTRO DE RUTAS 
+       _____________________---_ 
+        
+        
+        """)
+     print ("1.Guardar ruta")
+     print ("2.Actualizar ruta")
+     print ("3.Eliminar ruta")
+     print ("4.buscar rutas")
+     print("5.Asignar modulo a ruta")
+     print("0.Salir")
+     try: 
+          opc = int(input())
+     except ValueError:
+         system("clear")
+         continue
+         
+     
+    
+     match(opc):
+             case 1:RUTA.guardarRuta()
+             case 2: RUTA.editarRuta()
+             case 3: RUTA.eliminarRuta()
+             case 4: RUTA.buscarRuta()
+             case 5: 
+                 Myruta = {
+                 "codigo": f"R{len(rutas)+1}",
+                 "nombre_ruta": input("ingrese el nombre de la ruta:  ")
+                 ,"modulo": asignarModulos()
+                    }
+                 ruta.append(Myruta)
+                 path = "module/storage/"
+                 with open(path+"ruta.json","w") as f:
+                     f.write(json.dumps(rutas,indent=4))
+                     f.close() 
+             
+                    
+             case 0: 
+                  system("clear")
+                  bandera = False
+             case _: menuNoValid(opc)
+                 
 
 
 def menu():

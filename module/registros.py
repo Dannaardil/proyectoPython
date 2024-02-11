@@ -7,13 +7,15 @@ from module.data import ruta as ruta
 import module.modulos as modulos
 import module.prueba as prueba
 
+# def notas():
+#     print("notas")
+    
+    
+# def matricula():
+#     print("matriculas")
 
-path = "module/storage/"
-def carga():
-    with open(path+"ruta.json", "r") as f:
-        return json.loads(f.read())
-       
-
+# def areas():
+#     print("areas")
 def guardarRuta ():
     system ("clear")
     print("""  
@@ -123,3 +125,69 @@ ______________________________________________
         elif(opc == 3):
             bandera = False
      return "ruta deleted"
+def rutasMenu():
+    bandera = True
+    while(bandera):
+     print("""
+       ________________________   
+          
+        REGISTRO DE RUTAS 
+       _____________________---_ 
+        
+        
+        """)
+     print ("1.Guardar ruta")
+     print ("2.Actualizar ruta")
+     print ("3.Eliminar ruta")
+     print ("4.buscar rutas")
+     print("0.Salir")
+     try: 
+          opc = int(input())
+     except ValueError:
+         system("clear")
+         continue
+         
+     
+    
+     match(opc):
+             case 1:guardarRuta()
+             case 2: editarRuta()
+             case 3: eliminarRuta()
+             case 4: buscarRuta()
+             case 0: 
+                  system("clear")
+                  bandera = False
+             case _: menuNoValid(opc)
+                 
+
+
+    
+
+            
+         
+       
+    
+    
+def menu ():
+    bandera = True 
+    while (bandera):
+    
+       print("\t1.Registro de notas ")
+       print("\t2.Registro resultados de admision")
+       print("\t3.Registro de areas ")
+       print("\t4.Registro de rutas ")
+       print("\t5.Registro de modulos ")
+       print("\t6.Registro de matricula")
+       print("\t0.Salir")
+       opc = int(input())
+       match(opc):
+           case 1: notas()
+           case 2: prueba.menuPrueba()
+           case 3: areas()
+           case 4: rutasMenu()
+           case 5: modulos.modulos()
+           case 6: matricula()
+           case 0:
+               system("clear")
+               bandera = False
+           case _: menuNoValid(opc)
