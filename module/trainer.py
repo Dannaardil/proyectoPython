@@ -2,9 +2,83 @@ from os import system
 import json
 from .validate import menuNoValid
 from .data import trainer
+from .data import camperIns, rutas
 
+def asignarTrainer():
+    with open("module/storage/camperIns.json", "r")as archivo:
+        camperIns = json.load(archivo)
+    with open ("module/storage/trainer.json", "r")as archivo:
+        trainer = json.load(archivo)
+    bandera = True
+    while(bandera):
+        system("cls")
+        print(f"""
+              
+              ASIGNAR TRAINER A CAMPER
+              
+              """)
+        for i , val in enumerate(camperIns):
+                   print(f"""
+        codigo : {i}
+        Nombre : {val.get('Apellido')}
+        ID: {val.get('ID')}
+        Estado: {val.get('Estado')}
+        Ruta: {val.get('Ruta')}
+                         """)
+        codigo = int(input("ingrese el codigo del camper al que va a asignar un Trainer\n"))
+        if codigo>=len(camperIns):
+            print("fuera de rango")
+            continue
+        camperInfo = camperIns
+        print(f"""
+              codigo: {codigo}
+              Nombre: {camperIns[codigo].get('Nombre')}
+               Apellido: {camperIns[codigo].get('Apellido')}
+              ID: {camperIns[codigo].get('ID')}
+               Estado: {camperIns[codigo].get('Estado')}
+               Ruta: {camperIns[codigo].get('Ruta')}
+                        
+              
+              """)
+        print("este es el camper al que desea asignar el trainer?")
+        print("1. si")
+        print("2.No")
+        print("3.salir")
+        opc= int (input())
+        if(opc==1):
+                  for i, val in enumerate(trainer):
+                      print(f"""
+                  codigo: {i}
+                  Nombre: {val.get('Nombre')}
+                  
+                            
+                  """)
+                      codigoTrainer = int(input("Ingrese el codigo del trainer que vas a asignar\n"))
+                      if codigoTrainer>=len(trainer):
+                          print("codigo de ruta")
+                          continue
+                      trainerSelect= trainer[codigoTrainer]
+                      print(f"""
+                            codigo: {codigo}
+                            Nombre: {rutas[codigo].get('Nombre')}
+                            """)
+                      print("Esta es el trainer que deseas asignar?")
+                      print("1. si")
+                      print("2. no")
+                      print("3. salir")
+                      opc=int(input())
+                      if (opc==1):
+                            print("El trainer ha sido asignada.")
+                            camperIns[codigo]['Trainer']= trainerSelect
+                            with open("module/storage/camperIns.json", "w") as file:
+                                 json.dump(camperIns, file, indent=4)
+                            bandera=False
+                      elif (opc==3):
+                             bandera=False
+    with open("module/storage/camperIns.json", "w") as file:
+        json.dump(camperIns, archivo, indent=4)
 def save():
-    system("clear")
+    system("cls")
     print("""
     ____________________________
           
@@ -26,7 +100,7 @@ def save():
 def edit():
     bandera=True
     while (bandera):
-        system("clear")
+        system("cls")
         print("""
         ***************************
         * Acualizacion del trainer *
@@ -64,7 +138,7 @@ _____________________________________________
 
 
 def search():
-    system("clear")
+    system("cls")
     print("""
     ********************
     * Lista de trainers *
@@ -86,7 +160,7 @@ def delete():
 
     bandera = True
     while(bandera):
-        system("clear")
+        system("cls")
         print("""
         ***************************
         * Eliminacion del trainer  *
@@ -132,6 +206,7 @@ def menu():
         print("\t2. Buscar trainer")
         print("\t3. Actualizar trainer")
         print("\t4. Eliminar trainer")
+        print("\t5. Asignar trainer a camper")
         print("\t0. Atras")
         opc = int(input())
         match(opc):
@@ -139,7 +214,8 @@ def menu():
             case 2: search()
             case 3: edit()
             case 4: delete()
+            case 5: asignarTrainer()
             case 0:
-                system("clear")
+                system("cls")
                 bandera = False
             case _: menuNoValid(opc)

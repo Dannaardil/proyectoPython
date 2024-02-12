@@ -19,7 +19,7 @@ def carga():
 
     
 def buscarRuta():
-    system ("clear")
+    system ("cls")
     print(f"""  
       ______________________
      /                     /
@@ -114,7 +114,7 @@ def asignacionRuta():
         json.dump(rutas, archivo, indent=4)   
                                
 def editarRuta():          
-    system ("clear")
+    system ("cls")
     print("""  
       ______________________
      /                     /
@@ -151,7 +151,7 @@ _____________________________________________
 def eliminarRuta():
      bandera = True
      while(bandera):
-        system("clear")
+        system("cls")
         print("""
         xxxxxxxxxxxxxxxxxxxxxxxxxxxx
         x  ELIMINAR RUTA           x
@@ -170,9 +170,9 @@ ______________________________________________
         print("3. Salir")
         opc = int(input())
         if(opc == 1):
-            ruta.pop(codigo)
+            rutas.pop(codigo)
             with open("module/storage/rutas.json", "w") as f:
-                data = json.dumps(ruta, indent=4)
+                data = json.dumps(rutas, indent=4)
                 f.write(data)
                 f.close()
             bandera = False

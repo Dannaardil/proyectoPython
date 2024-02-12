@@ -6,7 +6,7 @@ from module.data import temario as temario
 
 path = "module/storage/"
 def carga():
-    with open(path+"modulos.json", "r") as f:
+    with open(path+"modulo.json", "r") as f:
         return json.loads(f.read())
        
 
@@ -41,7 +41,7 @@ f"{'fijo' if (str(input('Ingrese los temarios')))else 'Temario'}":
 
 def buscarModulo():
 
-    system ("clear")
+    system ("cls")
     print(f"""  
       ______________________
      /                     /
@@ -66,7 +66,7 @@ _______________________________________
     return "The module is available" 
 
 def editarModulo():
-    system ("clear")
+    system ("cls")
     print("""  
       ______________________
      /                     /
@@ -105,7 +105,7 @@ _____________________________________________|
 def eliminarModulo(): 
     bandera = True
     while(bandera):
-        system("clear")
+        system("cls")
         print("""
         xxxxxxxxxxxxxxxxxxxxxxxxxxxx
         x  ELIMINAR MODULO         x
@@ -155,14 +155,14 @@ def modulos():
      try: 
         opc = int(input())
      except ValueError:
-      system("clear")
+      system("cls")
      match(opc):
              case 1: guardarModulo()
              case 2: editarModulo()
              case 3: buscarModulo()
              case 4 : eliminarModulo()
              case 0: 
-                  system("clear")
+                  system("cls")
                   bandera = False
     
     

@@ -65,7 +65,7 @@ _________________________________________
         print("1. si")
         print("2.No")
         print("3.salir")
-        opc=(int(input))
+        opc=int(input())
         if (opc==1):
             info = {
                 "Nombre": input("Ingrese el nombre del area\n"),
@@ -74,4 +74,69 @@ _________________________________________
                 
                 
             }
+            areas[codigo]= info
+            with open("module/storage/areas.json", "w") as f:
+                data = json.dumps(areas, indent=4)
+                f.write(data)
+                f.close()
+            bandera = False
+        elif (opc==3):
+            bandera= False
+        return "area editada"
+def delete():
+    bandera = True 
+    while(bandera):
+        system("cls")
+        print("""
+              
+              ELIMINAR AREA
+              
+              """)
+        codigo = int(input("Ingrese el codigo del area que va a eliminar\n"))
+        print(F"""
+________________________________________
+Codigo : {codigo}
+Nombre: {areas[codigo].get('Nombre')}
+capacidad: {areas[codigo].get('capacidad')}
+______________________________________________              
+              
+              """)
+        print("este es el area que quieres eliminar?\n")
+        print("1.si")
+        print("2.No")
+        print("3.salir")
+        opc= int(input())
+        if (opc==1):
+            areas.pop(codigo)
+            with open ("module/storage/areas.json", "w")as f:
+                data = json.dumps(areas, indent=4)
+                f.write(data)
+                f.close()
+                bandera = False
+        elif(opc==3):
+            bandera = False
+        return "Area eliminada"
     
+def menuAreas():
+    bandera = True
+    while(bandera):
+        print("""
+              
+             CRUD DE AREAS
+              
+              """)
+        print("\t1. Registrar area")
+        print("\t2. Buscar area")
+        print("\t3. Actualizar area")
+        print("\t4. Eliminar area")
+        print("\t0 salir")
+        opc = int(input())
+        match(opc):
+            case 1: save()
+            case 2: search()
+            case 3: edit()
+            case 4: delete()
+            case 0:
+                system("cls")
+                bandera = False
+            case _: menuNoValid(opc)

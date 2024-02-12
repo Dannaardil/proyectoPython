@@ -1,17 +1,4 @@
 {
-    "nombre_ruta": "PYTHON",
-    "modulo": [
-        {
-            "codigo": "F002",
-            "nombre_modulo": "Estructuras de datos",
-            "temario": [
-                "listas",
-                "pilas",
-                "colas",
-                "\u00c3\u00a1rboles",
-                "gr\u00c3\u00a1ficos"
-            ],
-            "prioridad": "Intermedio"
-        }
-    ]
+    "nombre_ruta": "NetCore",
+    "modulo": []
 }

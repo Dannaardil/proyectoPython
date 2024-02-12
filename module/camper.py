@@ -9,7 +9,7 @@ from .data import estados as estados
   
 def save (): 
    
-    system ("clear")
+    system ("cls")
     print("""  
       ______________________
      /                     /
@@ -71,7 +71,7 @@ def save ():
         f.close()
     return "camper succesfully saved"
 def search ():
-    system ("clear")
+    system ("cls")
     print(f"""  
       ______________________
      /                     /
@@ -103,7 +103,7 @@ _______________________________________
 def edit(): 
    
     
-    system ("clear")
+    system ("cls")
     print("""  
       ______________________
      /                     /
@@ -158,7 +158,7 @@ _____________________________________________|
     elif Edad >=16 and Edad<18:
         acudiente= input("Ingrese el nombre completo de su acudiente\n")
     elif Edad>=18:
-        exit
+     exit
   
         
         
@@ -195,16 +195,16 @@ _____________________________________________|
     return "camper edited succesfully"
 
 def delete():
-     bandera = True
-     while(bandera):
-        system("clear")
-        print("""
+    
+    system("cls")
+    print("""
         xxxxxxxxxxxxxxxxxxxxxxxxxxxx
         x  ELIMINACION DEL CAMPER  x
         xxxxxxxxxxxxxxxxxxxxxxxxxxxx
         """)
-        for i, val in enumerate(camper):
-         telefonos = " "
+        
+    for i, val in enumerate(camper):
+        telefonos = " "
         for valor in val.get('Telefono'):
             for key, value in valor.items():
                 telefonos += f" {key} = {value}"
@@ -242,10 +242,10 @@ ______________________________________________
             bandera = False
         else:
             delete()
-            
-            
             bandera = False
-     return "Camper deleted"
+    
+
+    return "Camper deleted"
 
 def menu():
      bandera = True
@@ -265,7 +265,7 @@ _______________________
         try: 
           opc = int(input())
         except ValueError:
-            system("clear")
+            system("cls")
             continue
     
         match(opc):
@@ -274,7 +274,7 @@ _______________________
              case 3: edit()
              case 4: delete()
              case 0: 
-                  system("clear")
+                  system("cls")
                   bandera = False
              case _: menuNoValid(opc)
                  

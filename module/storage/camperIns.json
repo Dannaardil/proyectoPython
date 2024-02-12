@@ -1,0 +1,15 @@
+{
+    "Nombre": "Hugo Hernandez",
+    "Apellido": "Hernandez",
+    "Direccion": "Cra 20",
+    "Telefono": [
+        {
+            "fijo": 6492610
+        }
+    ],
+    "Acudiente": "Mary ",
+    "PruebaPromedio": null,
+    "Estado": "Inscrito",
+    "ID": "1095582",
+    "Notaprueba": 70
+}

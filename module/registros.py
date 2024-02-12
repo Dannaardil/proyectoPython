@@ -3,7 +3,7 @@ import json
 import module.camper as camper
 from module.data import resultadoSandbox
 from module.validate import menuNoValid
-from module.data import ruta as ruta
+from module.data import rutas as ruta
 import module.modulo as modulo
 import module.prueba as prueba
 
@@ -17,7 +17,7 @@ import module.prueba as prueba
 # def areas():
 #     print("areas")
 def guardarRuta ():
-    system ("clear")
+    system ("cls")
     print("""  
       ______________________
      /                     /
@@ -42,7 +42,7 @@ def guardarRuta ():
     return "camper succesfully saved"
     
 def buscarRuta():
-    system ("clear")
+    system ("cls")
     print(f"""  
       ______________________
      /                     /
@@ -60,7 +60,7 @@ _______________________________________
     return "The camper is available"
  
 def editarRuta():
-    system ("clear")
+    system ("cls")
     print("""  
       ______________________
      /                     /
@@ -97,7 +97,7 @@ _____________________________________________
 def eliminarRuta():
      bandera = True
      while(bandera):
-        system("clear")
+        system("cls")
         print("""
         xxxxxxxxxxxxxxxxxxxxxxxxxxxx
         x  ELIMINAR RUTA           x
@@ -144,7 +144,7 @@ def rutasMenu():
      try: 
           opc = int(input())
      except ValueError:
-         system("clear")
+         system("cls")
          continue
          
      
@@ -155,7 +155,7 @@ def rutasMenu():
              case 3: eliminarRuta()
              case 4: buscarRuta()
              case 0: 
-                  system("clear")
+                  system("cls")
                   bandera = False
              case _: menuNoValid(opc)
                  
@@ -168,26 +168,4 @@ def rutasMenu():
        
     
     
-def menu ():
-    bandera = True 
-    while (bandera):
-    
-       print("\t1.Registro de notas ")
-       print("\t2.Registro resultados de admision")
-       print("\t3.Registro de areas ")
-       print("\t4.Registro de rutas ")
-       print("\t5.Registro de modulos ")
-       print("\t6.Registro de matricula")
-       print("\t0.Salir")
-       opc = int(input())
-       match(opc):
-           case 1: notas()
-           case 2: prueba.menuPrueba()
-           case 3: areas()
-           case 4: rutasMenu()
-           case 5: modulo.modulos()
-           case 6: matricula()
-           case 0:
-               system("clear")
-               bandera = False
-           case _: menuNoValid(opc)
+
