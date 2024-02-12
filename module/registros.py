@@ -4,7 +4,7 @@ import module.camper as camper
 from module.data import resultadoSandbox
 from module.validate import menuNoValid
 from module.data import ruta as ruta
-import module.modulos as modulos
+import module.modulo as modulo
 import module.prueba as prueba
 
 # def notas():
@@ -185,7 +185,7 @@ def menu ():
            case 2: prueba.menuPrueba()
            case 3: areas()
            case 4: rutasMenu()
-           case 5: modulos.modulos()
+           case 5: modulo.modulos()
            case 6: matricula()
            case 0:
                system("clear")

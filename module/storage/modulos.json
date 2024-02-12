@@ -1,0 +1,74 @@
+[
+    {
+        "codigo": "F001",
+        "nombre_modulo": "Fundamentos de programacion",
+        "temario": [
+            "lenguaje natural",
+            "diagramas de flujo",
+            "git",
+            "psint",
+            "python"
+        ],
+        "prioridad": "Principal"
+    },
+    {
+        "codigo": "F002",
+        "nombre_modulo": "Estructuras de datos",
+        "temario": [
+            "listas",
+            "pilas",
+            "colas",
+            "árboles",
+            "gráficos"
+        ],
+        "prioridad": "Intermedio"
+    },
+    {
+        "codigo": "F003",
+        "nombre_modulo": "Programación orientada a objetos",
+        "temario": [
+            "clases y objetos",
+            "herencia",
+            "polimorfismo",
+            "encapsulamiento",
+            "interfaces"
+        ],
+        "prioridad": "Intermedio"
+    },
+    {
+        "codigo": "F004",
+        "nombre_modulo": "Desarrollo web",
+        "temario": [
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "frameworks web",
+            "API REST"
+        ],
+        "prioridad": "Principal"
+    },
+    {
+        "codigo": "F005",
+        "nombre_modulo": "Base de datos",
+        "temario": [
+            "modelado de datos",
+            "SQL",
+            "NoSQL",
+            "ORM",
+            "optimización de consultas"
+        ],
+        "prioridad": "Intermedio"
+    },
+    {
+        "codigo": "F006",
+        "nombre_modulo": "Inteligencia artificial",
+        "temario": [
+            "aprendizaje automático",
+            "redes neuronales",
+            "procesamiento de lenguaje natural",
+            "visión por computadora",
+            "ética en la IA"
+        ],
+        "prioridad": "Avanzado"
+    }                    
+]

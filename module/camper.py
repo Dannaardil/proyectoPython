@@ -50,7 +50,11 @@ def save ():
         }
            for x in range(int(input("ingrese la cantidad de telefonos que tiene: ")))
          ], 'Acudiente': acudiente,
-             'promedio': promedio,
+             'Notaprueba': 'no hay notas de prueba',
+             'Ruta': 'no hay ruta asignada',
+             "Trainer":'no hay trainer',
+             "Area de entrenamiento": 'aun no hay area',
+             "fechaInicio": 'fechaInicio',
          'Estado': input("Elija el estado del camper:\n\t"+"\t".join([f"{estados.index(i)+1}. {i}\n" for i in (estados)]))
          ,"ID": input("ingrese el numero de identificacion del camper\n")
     }    
@@ -120,8 +124,14 @@ Nombre: {camper[codigo].get('Nombre')}       |
 Apellido: {camper[codigo].get('Apellido')}   |
 Direccion: {camper[codigo].get('Direccion')} |
 Telefono: {telefonos}                        |
-Estado:   {camper[codigo].get('Estado ')}    |                  
-Numero de id: {camper[codigo].get ('ID')}    |
+Estado:   {camper[codigo].get('Estado ')} 
+Acudiente: {camper[codigo].get('Acudiente')}
+                                             |                  
+Numero de id: {camper[codigo].get ('ID')}  
+Notaprueba: no hay nota
+Ruta: no hay ruta                 
+Trainer: sin trainer
+Area de entrenamiento: sin area              |
 _____________________________________________|
 """)
     print("¿Este es el camper que deseas actualizar?")
@@ -165,14 +175,23 @@ _____________________________________________|
          ], 'Acudiente': acudiente,
           
          
-         'Estado': input("Elija el estado del camper:\n\t"+"\t".join([f"{estados.index(i)+1}. {i}\n" for i in (estados)]))
-         ,"ID": input("ingrese el numero de identificacion del camper\n")}
+         "Estado": input("Elija el estado del camper:\n\t"+"\t".join([f"{estados.index(i)+1}. {i}\n" for i in (estados)]))
+         ,"ID": input("ingrese el numero de identificacion del camper\n"), 
+         "Notaprueba": 'no haynota',
+         "Ruta": 'no hay ruta',
+         "Trainer": 'no hay trainer',
+         "Area de entrenamiento": "no hay area"
+         
+         
+         }
+      
             
     camper[codigo] = info
     with open("module/storage/camper.json", "w") as f:
                 data = json.dumps(camper, indent=4)
                 f.write(data)
                 f.close()
+                
     return "camper edited succesfully"
 
 def delete():
@@ -199,6 +218,12 @@ Direccion: {camper[codigo].get('Direccion')}
 Aduciente: {camper[codigo].get('Acudiente')}
 Telefono: {telefonos}
 Numero de id: {camper[codigo].get('ID')}
+NAcudiente: {camper[codigo].get('NAcudiente')}
+Estado: {camper[codigo].get('Estado')}
+NotaPrueba: no hay nota
+Ruta: no hay ruta
+Trainer: no hay trainer
+Area de entrenamiento: no hay area
 ______________________________________________
         """)
         print("¿Este es el camper que deseas eliminar?")

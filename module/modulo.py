@@ -1,12 +1,12 @@
 from os import system
 import json
 from module.validate import menuNoValid
-from module.data import modulo as modulo
+from module.data import modulos as modulo
 from module.data import temario as temario
 
 path = "module/storage/"
 def carga():
-    with open(path+"modulo.json", "r") as f:
+    with open(path+"modulos.json", "r") as f:
         return json.loads(f.read())
        
 
@@ -25,7 +25,12 @@ def guardarModulo():
     info = { 
             "codigo": input("ingrese el codigo del modulo"),
         "nombre_modulo": input("ingrese el nombre del modulo"),
-        "temario": input("ingrese el temario"),
+        "temario": [{
+f"{'fijo' if (str(input('Ingrese los temarios')))else 'Temario'}":   
+               (input(f'temario{x+1}: '))
+        }
+           for x in range(int(input("ingrese la cantidad de temas que va a ingresar:")))
+         ],
         "prioridad": input("ingrese la prioridad")
         }    
     with open ("module/storage/modulo.json", "w") as f:
@@ -42,6 +47,11 @@ def buscarModulo():
      /                     /
      /    BUSCAR MODULO    /
      /_____________________/""")
+    for i, val in enumerate(modulo):
+        temario = " "
+        for valor in val.get('temario'):
+            for key, value in valor.items():
+                temario += f" {key} = {value}"
 
             
     for i,val in enumerate(modulo):
@@ -49,6 +59,7 @@ def buscarModulo():
 ______________________________________
 Codigo: {val.get('codigo')}
 Modulo: {val.get('nombre_modulo')}
+temario: {temario}
 prioridad:{val.get('prioridad')}
 _______________________________________
  """)
