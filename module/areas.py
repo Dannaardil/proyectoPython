@@ -27,11 +27,16 @@ def asignarArea():
         Apellido: {val.get('Apellido')}
         ID: {val.get('ID')}
         Estado: {val.get('Estado')}
-        Area de Entrenamiento: {val.get('Area de Entrenamiento')}               
+        Area de Entrenamiento: {val.get('Nombre')}               
        """)
         codigo = int(input("Ingrese el codigo del camper al que le va a asignar el area"))         
         if codigo>=len(camperIns):
-            print("Fuera de rango")
+            print("""
+    __________________________________
+                                 
+       NO EXISTEN CAMPERS INSCRITOS
+    ___________________________________
+""")
             continue
         camperInfo = camperIns
         print(f"""
@@ -53,9 +58,9 @@ def asignarArea():
                     for i, val in enumerate(areas):
                         print(f"""
                     codigo: {i}
-                    Area de entrenamiento: {val.get('Area de entrenamiento')}         
+                    Area de entrenamiento: {val.get('Nombre')}         
                     capacidad: {val.get('capacidad')}          
-                              
+
                               """)
                         codigoArea = int(input("Ingrese el codigo del area de entrenamiento\n"))
                         if codigoArea>=len(areas):
@@ -63,8 +68,8 @@ def asignarArea():
                             continue
                         areaseleccionada = [codigoArea]
                         print(f"""
-                              codigo: {codigo}
-                              Nombre: {areas[codigo].get('Nombre')}
+                              codigo: {codigoArea}
+                              Nombre: {areas[codigoArea].get('Nombre')}
                               """)
                         print("Es esta el area que deseas asignar? ")
                         print('1.si')
@@ -132,6 +137,8 @@ ACTUALIZAR AREA
 _________________
             
               """)
+        with open("module/storage/areas.json", "r") as archivo:
+         areas = json.load(archivo)
         codigo= int(input("ingrese el codigo de area que va a editar\n"))
         print(f"""
 _______________________________________

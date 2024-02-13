@@ -10,7 +10,7 @@ from module.data import modulo as modulo
 from module.data import rutas as rutas2
 import module.data as data
 import module.areas as areas
-
+import module.horarios as horarios
 rutas= RUTA.carga()
 modulos1 = modulos.carga()
 
@@ -127,7 +127,8 @@ def menuRegistros ():
         print("\t3.Areas(crud/asignaciones) ")
         print("\t4.Rutas(crud/asignaciones)")
         print("\t5.Modulos(crud/asignaciones) ")
-        print("\t6.Matricula")
+        print("\t6.Horario(crud/asignaciones)")
+        print("\t7.Matricula")
         print("\t0.Salir")
         opc = int(input())
         match(opc):
@@ -137,6 +138,8 @@ def menuRegistros ():
            case 4:menuRutas()
            case 5:
                modulos.modulos()
+           case 6:
+                horarios.menu()
            case 0:
                system("cls")
                bandera = False
