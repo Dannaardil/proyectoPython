@@ -84,7 +84,7 @@ def asignarArea():
                             bandera = False
                         elif(opc==3):
                             bendera=False
-    with open("module/storage/CamperIns.json", "w")as archivo:
+    with open("module/storage/camperIns.json", "w")as archivo:
         json.dump(camperIns, archivo, indent= 4)
         
 def save():           
@@ -124,7 +124,7 @@ __________________________________
               
               
               """)
-        return "area esta disponible"
+    return "area esta disponible"
 
 def edit():
     bandera = True

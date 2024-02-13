@@ -31,7 +31,7 @@ def menuRutas():
         
         
         """)
-     print ("1.Crear una ruta y Asignar modulo a ruta")
+     print ("1.Crear una ruta y Asignar modulo a ruta ✨")
      print ("2.Actualizar ruta")
      print ("3.Eliminar ruta")
      print ("4.buscar rutas")
