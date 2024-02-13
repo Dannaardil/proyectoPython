@@ -4,15 +4,15 @@ import module.camper as camper
 import module.trainer as trainer
 from module.validate import menuNoValid
 import module.ruta as RUTA
-import module.modulo as modulo
+import module.modulo as modulos
 import module.prueba as Prueba
-from module.data import modulos as modulos1
+from module.data import modulo as modulo
 from module.data import rutas as rutas2
 import module.data as data
 import module.areas as areas
 
 rutas= RUTA.carga()
-modulos = modulo.carga()
+modulos1 = modulos.carga()
 
 def plantilla(data):
     lista = []
@@ -65,8 +65,7 @@ def menuRutas():
                         }    
                 rutas2.append(info)
                 with open ("module/storage/rutas.json", "w") as f:
-                            data = json.dumps(info, indent=4)
-                            f.write(data)
+                            f.write(json.dumps(rutas2, indent=4))
                             f.close()
                             
                 return ("ruta saved")
@@ -88,45 +87,56 @@ def menuRutas():
 def asignarModulos():
     # Temario: {"".join([f"{i} - {val}" for i,val in enumerate(val.get("temario"))])}
     selecion = set()
-    
+    nuevaLista= []
     while(True):
-        for val in modulos1:
+        
+        selecion = set()
+        nuevaLista = []
+        for val in modulo:
             print(f"""
             ________________
             Codigo: {val.get("codigo")}
             Nombre: {val.get("nombre_modulo")}
             Prioridad: {val.get("prioridad")}
-            Temario: {plantilla(val.get("temario"))}
+            Temario: {(val.get("temario"))}
             ________________
             """)
 
         selecion.add(input("¿Selecione el modulo que deseas ingresando el codigo?\n"))
         if(not int(input("¿Deseas agregar otro modulo?\n1.SI\n0.NO\n"))):
             for i in selecion:
-                for val in modulos1:
+                for val in modulo:
                    if(val.get("codigo") == i):
-                        modulos1.append(val)
+                        modulo.append(val)
             break
-    return modulos1
+    return modulo
 def menuRegistros ():
     bandera = True 
     while (bandera):
+        print("""
+           ______--------_-----______------__
+           
+             BIENVENIDO A <<< REGISTROS Y 
+                   ASIGNACIONES >>>>>
+                   
+           ___----____---_---_-_---_---___-- _
+              """)
     
-       print("\t1.Registro de notas ")
-       print("\t2.Registro resultados de admision")
-       print("\t3.Registro de areas ")
-       print("\t4.Registro de rutas ")
-       print("\t5.Registro de modulos ")
-       print("\t6.Registro de matricula")
-       print("\t0.Salir")
-       opc = int(input())
-       match(opc):
+        print("\t1.Notas de modulos")
+        print("\t2.Prueba de admision")
+        print("\t3.Areas(crud/asignaciones) ")
+        print("\t4.Rutas(crud/asignaciones)")
+        print("\t5.Modulos(crud/asignaciones) ")
+        print("\t6.Matricula")
+        print("\t0.Salir")
+        opc = int(input())
+        match(opc):
            case 1: print("EN PROCESO")
            case 2:Prueba.menuPrueba()
            case 3:areas.menuAreas()
            case 4:menuRutas()
            case 5:
-               modulo.modulos()
+               modulos.modulos()
            case 0:
                system("cls")
                bandera = False
@@ -146,7 +156,7 @@ def menu():
           """)
     print("\t1. Opciones de camper")
     print("\t2. Opciones de trainer ")
-    print("\t3. Asignaciones/registros ")
+    print("\t3. Asignaciones/registros/cruds ")
     print("\t4. Modulo de reportes")
     print("\t0.Salir")
 bandera=True
@@ -167,7 +177,7 @@ while (bandera):
                 camper.menu()
         case 2:
             with open("module/storage/trainer.json", "r") as f:
-              trainer.trainer = json.loads(f.read())
+              trainer.trainer2 = json.loads(f.read())
               f.close()
               system("cls")
               trainer.menu()

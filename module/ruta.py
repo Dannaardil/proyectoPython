@@ -3,10 +3,10 @@ import json
 import module.camper as camper
 from module.data import resultadoSandbox
 from module.validate import menuNoValid
-from module.data import rutas as rutas
+from module.data import rutas as rutas1
 import module.modulo as modulo
 import module.prueba as prueba
-from module.data import modulos as modulos
+from module.data import modulo as modulo
 
 
 path = "module/storage/"
@@ -18,6 +18,7 @@ def carga():
 
 
     
+    
 def buscarRuta():
     system ("cls")
     print(f"""  
@@ -26,8 +27,9 @@ def buscarRuta():
      /    BUSCAR RUTA      /
      /_____________________/""")
 
-        
-    for i,val in enumerate(rutas):
+    with open ("module/storage/rutas.json", "r") as archivo:
+        rutas= json.load(archivo)    
+    for i,val in enumerate(rutas1):
         print(f"""
 ______________________________________
 codigo: {i}
@@ -38,8 +40,8 @@ ______________________________________
     return "The camper is available"
  
 def asignacionRuta():
-    with open("module/storage/rutas.json", "r") as archivo:
-        rutas=json.load(archivo)
+    with open("module/storage/camperIns.json", "r") as archivo:
+        camperIns=json.load(archivo)
     with open ("module/storage/rutas.json", "r") as archivo:
         rutas= json.load(archivo)
     bandera = True
@@ -52,7 +54,7 @@ def asignacionRuta():
              ______________________
             
             """)
-        for i, val in enumerate(rutas): 
+        for i, val in enumerate(camperIns): 
                   print(f"""
         codigo: {i}
         Nombre: {val.get('Nombre')}
@@ -64,17 +66,17 @@ def asignacionRuta():
                         
                         """)
         codigo = int(input("Ingrese el codigo del camper al que desea asignar un ruta:  "))
-        if codigo>=len(rutas):
+        if codigo>=len(camperIns):
             print("codigo no valido")
             continue
-        camperInfo = rutas
+        camperInfo = camperIns
         print(f""" 
               codigo: {codigo}
-              Nombre: {rutas[codigo].get('Nombre')}
-              Apellido: {rutas[codigo].get('Apellido')}
-              ID : {rutas[codigo].get('ID')}
-              Estado: {rutas[codigo].get('Estado')}
-              Ruta: {rutas[codigo].get('Ruta')} 
+              Nombre: {camperIns[codigo].get('Nombre')}
+              Apellido: {camperIns[codigo].get('Apellido')}
+              ID : {camperIns[codigo].get('ID')}
+              Estado: {camperIns[codigo].get('Estado')}
+              Ruta: {camperIns[codigo].get('Ruta')} 
                            
               """)
         print("este es el camper que al que desea asignerle una ruta??")
@@ -103,14 +105,14 @@ def asignacionRuta():
                      print("3.salir")
                      opc = int(input())
                      if (opc==1):
-                         print("La ruta fue asignar")
+                         print("La ruta fue asignada\n")
                          rutas[codigo]['Ruta']= rutaSeleccionada
-                         with open("module/storage/rutas.json", "w") as archivo:
-                             json.dump(rutas, archivo, indent=4)
+                         with open("module/storage/camperIns.json", "w") as archivo:
+                             json.dump(camperIns, archivo, indent=4)
                          bandera = False
                      elif (opc==3):
                          bandera=False
-    with open ("module/storage/rutas.json", "w") as archivo:
+    with open ("module/storage/camperIns.json", "w") as archivo:
         json.dump(rutas, archivo, indent=4)   
                                
 def editarRuta():          
@@ -121,6 +123,8 @@ def editarRuta():
      /    EDITAR RUTA      /
      /_____________________/
 """)
+    with open ("module/storage/rutas.json", "r") as archivo:
+        rutas= json.load(archivo)
     codigo = int(input("Ingrese el codigo de la ruta que desea editar:\n"))
     print(f"""
 _____________________________________________
@@ -138,7 +142,7 @@ _____________________________________________
         info = {
         "Ruta": input("Ingrese el nombre de la ruta\n")}
             
-        rutas[codigo] = info
+        rutas1[codigo] = info
         with open("module/storage/rutas.json", "w") as f:
                 data = json.dumps(info, indent=4)
                 f.write(data)
@@ -161,7 +165,7 @@ def eliminarRuta():
         print(f"""
 ______________________________________________
 Codigo: {codigo}
-Nombre De la ruta: {rutas[codigo].get('nombre_ruta')}  
+Nombre De la ruta: {rutas1[codigo].get('nombre_ruta')}  
 ______________________________________________
         """)
         print("¿Esta es la ruta que deseas eliminar?")
@@ -170,9 +174,9 @@ ______________________________________________
         print("3. Salir")
         opc = int(input())
         if(opc == 1):
-            rutas.pop(codigo)
+            rutas1.pop(codigo)
             with open("module/storage/rutas.json", "w") as f:
-                data = json.dumps(rutas, indent=4)
+                data = json.dumps(rutas1, indent=4)
                 f.write(data)
                 f.close()
             bandera = False

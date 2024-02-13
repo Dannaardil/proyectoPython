@@ -1,12 +1,12 @@
 from os import system
 import json
 from module.validate import menuNoValid
-from module.data import modulos as modulo
+from module.data import modulo as modulo
 from module.data import temario as temario
 
 path = "module/storage/"
 def carga():
-    with open(path+"modulo.json", "r") as f:
+    with open(path+"modulos.json", "r") as f:
         return json.loads(f.read())
        
 
@@ -23,8 +23,8 @@ def guardarModulo():
         
         
     info = { 
-            "codigo": input("ingrese el codigo del modulo"),
-        "nombre_modulo": input("ingrese el nombre del modulo"),
+            "codigo": input("Elija Un codigo para el modulo\n"),
+        "nombre_modulo": input("Elija un nombre para el modulo\n"),
         "temario": [{
 f"{'fijo' if (str(input('Ingrese los temarios')))else 'Temario'}":   
                (input(f'temario{x+1}: '))
@@ -33,7 +33,7 @@ f"{'fijo' if (str(input('Ingrese los temarios')))else 'Temario'}":
          ],
         "prioridad": input("ingrese la prioridad")
         }    
-    with open ("module/storage/modulo.json", "w") as f:
+    with open ("module/storage/modulos.json", "w") as f:
         data = json.dumps(info, indent=4)
         f.write(data)
         f.close()
@@ -94,7 +94,7 @@ _____________________________________________|
             'Temario': input("Ingrese el temario\n")       
                            }
         modulo[codigo] = info
-        with open("module/storage/modulo.json", "w") as f:
+        with open("module/storage/modulos.json", "w") as f:
                 data = json.dumps(modulo, indent=4)
                 f.write(data)
                 f.close()

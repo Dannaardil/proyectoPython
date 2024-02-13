@@ -35,11 +35,11 @@ def save ():
     elif Edad >=16 and Edad<18:
         acudiente= input("Ingrese el nombre completo de su acudiente\n")
     elif Edad>=18:
-        exit
+      
   
         
         
-    info = {
+     info = {
         "Nombre": input("Ingrese el nombre del camper\n"),
         "Apellido": input("Ingrese el apellido del camper\n")
         ,"Direccion": input("ingrese la direccion\n")
@@ -158,11 +158,11 @@ _____________________________________________|
     elif Edad >=16 and Edad<18:
         acudiente= input("Ingrese el nombre completo de su acudiente\n")
     elif Edad>=18:
-     exit
+      
   
         
         
-    info = {
+     info = {
         "Nombre": input("Ingrese el nombre del camper\n"),
         "Apellido": input("Ingrese el apellido del camper\n")
         ,"Direccion": input("ingrese la direccion\n")
@@ -252,10 +252,12 @@ def menu():
      while(bandera):
    
         print(""" 
-_______________________
-                
-////CRUD DEL CAMPER////
-_______________________
+__________________________
+
+
+    ¡¡ CRUD DE CAMPER!!           
+
+___________________________
 """)
         print("\t1. Registrar camper") 
         print("\t2. Buscar camper")
