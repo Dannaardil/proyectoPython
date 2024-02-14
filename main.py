@@ -11,8 +11,105 @@ from module.data import rutas as rutas2
 import module.data as data
 import module.areas as areas
 import module.horarios as horarios
+import module.notas as notas
+
 rutas= RUTA.carga()
 modulos1 = modulos.carga()
+
+def ListarCampersIns():
+    with open("module/storage/camperIns.json", "r") as archivo:
+        camper = json.load(archivo)
+    system("cls")
+    print("""
+            ______________________
+              
+               CAMPERS INSCRITOS
+            ______________________  
+            
+              """)
+    for i, val in enumerate (camper):
+            print(f"""
+    ____________________________
+    codigo: {i}
+    nombre: {val.get('Nombre')}  
+    Apellido: {val.get('Apellido')}
+    ID: {val.get('ID')}
+    Estado: {val.get('Estado')}  
+    ________________________________          
+                  
+                  
+                  """)
+
+def ListarCampersAprobados():
+    with open("module/storage/camperIns.json", "r") as archivo:
+        camper = json.load(archivo)
+    system("cls")
+    print("""
+            ______________________
+              
+               CAMPERS INSCRITOS
+            ______________________  
+            
+              """)
+    for i, val in enumerate (camper):
+            print(f"""
+    ____________________________
+    codigo: {i}
+    nombre: {val.get('Nombre')}  
+    Apellido: {val.get('Apellido')}
+    ID: {val.get('ID')}
+    Estado: {val.get('Estado')}  
+    Nota con la que aprobo: {val.get('Notaprueba')}
+    ________________________________          
+                  
+                  
+                  """)
+            
+def ListarTrainers():
+    with open("module/storage/trainer.json", "r") as archivo:
+        trainer = json.load(archivo)
+    system("cls")
+    print("""
+            ______________________
+              
+                  TRAINERS 
+            ______________________  
+            
+              """)
+    for i, val in enumerate (trainer):
+            print(f"""
+    ____________________________
+    codigo: {i}
+    nombre: {val.get('Nombre')}  
+    Apellido: {val.get('Apellido')}
+    _____________________________
+    """)
+            
+
+def menuReportes():
+   bandera= True
+   while(bandera):
+    print("""
+       ///////////////////   
+        MODULO DE REPORTES  
+       ///////////////////   
+          """)
+    print("\t1.Listar campers inscritos.")
+    print("\t2.Listar campers aprobados.")
+    print("\t3.Listar trainers.")
+    print("\t0.salir.")
+    try: 
+        opc = int(input())
+    except ValueError:
+      system("cls")
+    match(opc):
+             case 1: ListarCampersIns()
+             case 2: ListarCampersAprobados()
+             case 3: ListarTrainers()
+             case 0: 
+                  system("cls")
+                  bandera = False
+
 
 def plantilla(data):
     lista = []
@@ -35,7 +132,9 @@ def menuRutas():
      print ("2.Actualizar ruta")
      print ("3.Eliminar ruta")
      print ("4.buscar rutas")
-     print("5.asignar ruta a camper")
+     print("5.asignar ruta a CAMPER")
+     print("5.asignar ruta a TRAINER")
+     
      
      
      print("0.Salir")
@@ -78,6 +177,8 @@ def menuRutas():
              case 4: RUTA.buscarRuta()
              case 5: 
                  RUTA.asignacionRuta()
+             case 6: 
+                 RUTA.asignacionRutaTrainer()
                     
              case 0: 
                   system("cls")
@@ -94,12 +195,13 @@ def asignarModulos():
         nuevaLista = []
         for val in modulo:
             print(f"""
-            ________________
+            _________________________________
+            
             Codigo: {val.get("codigo")}
             Nombre: {val.get("nombre_modulo")}
             Prioridad: {val.get("prioridad")}
             Temario: {(val.get("temario"))}
-            ________________
+            ___________________________________
             """)
 
         selecion.add(input("¿Selecione el modulo que deseas ingresando el codigo?\n"))
@@ -132,7 +234,7 @@ def menuRegistros ():
         print("\t0.Salir")
         opc = int(input())
         match(opc):
-           case 1: print("EN PROCESO")
+           case 1: notas.pruebaFundamentos()
            case 2:Prueba.menuPrueba()
            case 3:areas.menuAreas()
            case 4:menuRutas()
@@ -186,6 +288,9 @@ while (bandera):
               trainer.menu()
         case 3:
             menuRegistros()
+        case 4: 
+            menuReportes()
+            
                        
         case 0:
             system("cls")

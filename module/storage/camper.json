@@ -1,1 +1,22 @@
-[]
+[
+    {
+        "Nombre": "",
+        "Apellido": "ardila",
+        "Direccion": "3123",
+        "Telefono": [
+            {
+                "Celular": 1938
+            }
+        ],
+        "Acudiente": "",
+        "Notaprueba": "no hay notas de prueba",
+        "Ruta": "no hay ruta asignada",
+        "Trainer": "no hay trainer",
+        "Area de entrenamiento": "aun no hay area",
+        "fechaInicio": "fechaInicio",
+        "modulonotaModulo": "Aun no se ha asignado la nota",
+        "notaTeoricaM": "aun no se asigna esta nota",
+        "Estado": "1",
+        "ID": "3847813"
+    }
+]

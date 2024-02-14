@@ -13,8 +13,13 @@ def asignarTrainer():
     while(bandera):
         system("cls")
         print(f"""
+             ____________________________
               
               ASIGNAR TRAINER A CAMPER
+             _______________________________
+              
+             ## (PARA ESTO EL CAMPER YA DEBE FIGURAR COMO INCRITO
+              PRIMERO REGISTRAR PRUEBAS DE SANBOX)##
               
               """)
         for i , val in enumerate(camperIns2):
@@ -60,7 +65,9 @@ def asignarTrainer():
                       trainerSelect= trainer2[codigoTrainer]
                       print(f"""
                             codigo: {codigo}
-                            Nombre: {rutas[codigo].get('Nombre')}
+                            Nombre: {trainer2[codigo].get('Nombre')}
+                            Apellido: {trainer2[codigo].get('Apellido')}
+                            Ruta: {trainer2[codigo].get('Ruta')}
                             """)
                       print("Esta es el trainer que deseas asignar?")
                       print("1. si")
@@ -89,6 +96,7 @@ def save():
         "Nombre": input("Ingrese el nombre del trainer\n"),
         "Apellido": input("Ingrese el apellido del trainer\n"),
        "numero de id": input("Ingrese el numero de id del trainer\n")
+       ,"Ruta": 'No  hay ruta asignada'
        
     }
     trainer2.append(info)
@@ -112,7 +120,8 @@ ____________________________________________
 Codigo: {codigo}
 Nombre: {trainer2[codigo].get('Nombre')}
 Apellido: {trainer2[codigo].get('Apellido')}
-numero id: {trainer2[codigo].get('ID')}
+numero id: {trainer2[codigo].get('numero de id')}
+Ruta: {trainer2[codigo].get('Ruta')}
 _____________________________________________
 """)
         print("¿Este es el trainer que deseas actualizar?")
@@ -125,16 +134,16 @@ _____________________________________________
                 "Nombre": input("Ingrese el nombre del trainer\n"),
                 "Apellido": input("Ingrese el apellido del trainer\n"),
                  "numero de id": input("ingrese el numero de id\n")
-                }
+                                 }
             trainer2[codigo]= info
             with open ("module/storage/trainer.json", "w") as f:
-                data = json.dumps(trainer2, indent= 4)
-                f.write(data)
-                f.close()
+                 data = json.dumps(trainer2, indent= 4)
+                 f.write(data)
+                 f.close()
             bandera = False
         elif(opc == 3):
             bandera = False
-    return  "Edit to trainer"
+        return  "Edit to trainer"
 
 
 def search():
@@ -146,13 +155,13 @@ def search():
     """)
     for i,val in enumerate(trainer2):
         print(f"""
-________________________
+_________________________________________
 Codigo: {i}
 Nombre: {val.get('Nombre')}
 Apellido: {val.get('Apellido')}
-Numero de id: {val.get('ID')}
-
-________________________
+Numero de id: {val.get('numero de id')}
+Ruta: {val.get('Ruta')}
+__________________________________________
         """)
     return "The trainer is available"
                 
@@ -173,7 +182,8 @@ __________________________________________
 Codigo: {codigo}
 Nombre: {trainer2[codigo].get('Nombre')}
 Apellido: {trainer2[codigo].get('Apellido')}
-Numero de id: {trainer2[codigo].get ('ID')}
+Numero de id: {trainer2[codigo].get ('numero de id')}
+Ruta: {trainer2[codigo].get('Ruta')}
 __________________________________________
         """)
         print("¿Este es el trainer que deseas actualizar?")

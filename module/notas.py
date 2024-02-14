@@ -1,81 +1,64 @@
 import json
+import os
 from os import system
+from .data import pruebaModulo as prueba2
+from .data import modulo
+def pruebaFundamentos():
+    print("""
+PRUEBA FUNDAMENTOS
+""")
 
-def pruebaModulo():
-    with open("module/storage/camperIns.json", "r")as archivo:
-        camperIns = json.load(archivo)
-    with open ("module/storage/notas.json", "r")as archivo:
-        notas = json.load(archivo)
-    bandera = True 
-    while(bandera):
-        system("cls")
-        print("""
-            ______________________
-              
-               ASIGNAR NOTAS
-            ______________________  
+    # Cargar campersNuevos desde el archivo JSON
+    ruta_completa = os.path.join(os.getcwd(), 'module/storage/camper.json')
+    with open(ruta_completa, "r") as f:
+        campersNuevos = json.load(f)
+
+    num_identificacion = int(input("ingrese el numero de id de el camper al que va a asignar la nota: "))
+
+    participante = None
+
+    for val in campersNuevos:
+        if val.get('ID') == num_identificacion:
+            participante = val
             
-              """)
-      
 
-        for i, val in enumerate(camperIns):
-                print(f"""
-                      """)
+    if participante:
+        
+        practica = int(input("Ingrese la calificacion de la prueba práctica: "))
+        teorica = int(input("Ingrese la calificacion de la prueba teórica: "))
+        quices_trabajos = int(input("Ingrese la calificacion de quices y trabajos: "))
 
         
-        codigo= int("Ingrese el codigo del camper al que le va a asignar la nota:\n")
-        if codigo>=len(camperIns):
-            print("FUERA DE RANGO")
-            continue
-        camperInfo = camperIns
+        nota_final = (practica * 0.6) + (teorica * 0.3) + (quices_trabajos * 0.1)
+        
+        if nota_final >= 60:
+            print("!Has sido aprobado¡, tu nota es: {:.2f}".format(nota_final))
+        else:
+            print("Estás en riesgo :(, tu nota es: {:.2f}".format(nota_final))
+        
+        participante['NotaModulo'] = nota_final
+        participante['Estado'] = 'En Riesgo' if nota_final < 60 else 'Aprobado'
+        participante['Horario'] = None
+
+        
+
         print(f"""
-              
-            codigo: {codigo}
-            Nombre{camperIns[codigo].get('Nombre')}
-            Apellido: {camperIns[codigo].get('Apellido')}
-            ID: {camperIns[codigo].get('ID')}
-            Estado: {camperIns[codigo].get('Estado')}
-            Ruta: {camperIns[codigo].get('Ruta')}
-              
-              """)
-        print("¿Este es el camper al que deseas asignarle la nota?")
-        print("1.Si")
-        print("2.No")
-        print("3.salir")
-        opc= int(input())
-        if(opc==1):
-                    for i, val in enumerate(notas):
-                      print(f"""
-                            
-                     codigo: {i}
-                     Horario: {val.get('horario')}
-   
-                            """)
-                    codigoNota=int(input("Ingrese el codigo del horario que deseas asignar:\n"))
-                    if codigoNota>=len(notas):
-                        print("FUERA RANGO")
-                        continue
-                    notaSelect= notas[codigoNota]
-                    print(f"""
-                          
-                          
-                          codigo: {codigo}
-                          Nota modulo: {notas[codigo].get('notaPrueba')}
-                          
-                          
-                          """)
-                    print("¿Es este el horario que quieres asignar?")
-                    print("1.si")
-                    print("2.no")
-                    print("3.salir")
-                    opc=int(input())
-                    if (opc==1):
-                        print("El horario se asigno exitosamente!!")
-                        camperIns[codigo]['notaPrueba']= notaSelect
-                        with open("module/storage/camperIns.json", "w")as archivo:
-                            json.dump(camperIns,archivo, indent=4)
-                        bandera= False
-                    elif(opc==3):
-                        bandera=False  
-    with open("module/storage/camperIns.json", "w")as archivo:
-          json.dump(camperIns, archivo, ident=4)
+        Datos del participante:
+        N_Identificacion: {participante.get('ID')}
+        Nombre: {participante.get('Nombre')}
+        Apellido: {participante.get('Apellido')}
+        Estado: {participante.get('Estado')}
+        Horario: {participante.get('Horario')}
+        """)
+        ruta_completa = os.path.join(os.getcwd(), 'module/storage/camper.json')
+        with open(ruta_completa, "w") as f:
+            data = json.dumps(campersNuevos, indent=4)
+            f.write(data)
+
+
+
+        
+    
+
+# 
+    

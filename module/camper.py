@@ -17,6 +17,7 @@ def save ():
      /_____________________/
      
     """)
+    
     Edad=  int(input("ingrese la edad del camper\n"))
     acudiente  = ''
     if Edad<16:
@@ -29,17 +30,19 @@ def save ():
                      
                      
                      """)
+    
     elif Edad> 28:
         return print(" Exedes el limite de edad ")
     
-    elif Edad >=16 and Edad<18:
-        acudiente= input("Ingrese el nombre completo de su acudiente\n")
     elif Edad>=18:
-      
-  
+        print("No necesitas acudiente")
+    elif Edad >=16 and Edad<18:
         
+        acudiente= input("Ingrese el nombre completo de su acudiente\n")
+    
+    
         
-     info = {
+    info = {
         "Nombre": input("Ingrese el nombre del camper\n"),
         "Apellido": input("Ingrese el apellido del camper\n")
         ,"Direccion": input("ingrese la direccion\n")
@@ -55,6 +58,9 @@ def save ():
              "Trainer":'no hay trainer',
              "Area de entrenamiento": 'aun no hay area',
              "fechaInicio": 'fechaInicio',
+             "modulo"
+             "notaModulo": 'Aun no se ha asignado la nota',
+             "notaTeoricaM":"aun no se asigna esta nota",
          'Estado': input("Elija el estado del camper:\n\t"+"\t".join([f"{estados.index(i)+1}. {i}\n" for i in (estados)]))
          ,"ID": input("ingrese el numero de identificacion del camper\n")
     }    
@@ -62,8 +68,6 @@ def save ():
   
     
     
-    if Edad<16:
-        print()
     camper.append(info)
     with open ("module/storage/camper.json", "w") as f:
         data = json.dumps(camper, indent=4)
@@ -95,6 +99,10 @@ Telefono : {telefonos}
 Acudiente: {val.get('Acudiente')}
 Estado: {val.get('Estado')}
 numero de id: {val.get('ID')}
+Nota sandbox : {val.get('Notaprueba')}
+Ruta: {val.get('Ruta')}
+Trainer asignado: {val.get('Trainer')}
+Area de entrenamiento: {val.get('Area de entrenamiento')}
 _______________________________________
  """)
     return "The camper is available"
@@ -155,14 +163,17 @@ _____________________________________________|
     elif Edad> 28:
         return print(" Exedes el limite de edad ")
     
-    elif Edad >=16 and Edad<18:
-        acudiente= input("Ingrese el nombre completo de su acudiente\n")
     elif Edad>=18:
+        print("No necesitas acudiente")
+    elif Edad >=16 and Edad<18:
+        
+        acudiente= input("Ingrese el nombre completo de su acudiente\n")
+    
       
   
         
         
-     info = {
+    info = {
         "Nombre": input("Ingrese el nombre del camper\n"),
         "Apellido": input("Ingrese el apellido del camper\n")
         ,"Direccion": input("ingrese la direccion\n")
@@ -177,8 +188,8 @@ _____________________________________________|
          
          "Estado": input("Elija el estado del camper:\n\t"+"\t".join([f"{estados.index(i)+1}. {i}\n" for i in (estados)]))
          ,"ID": input("ingrese el numero de identificacion del camper\n"), 
-         "Notaprueba": 'no haynota',
-         "Ruta": 'no hay ruta',
+         "Notaprueba": 'No hay nota registrada',
+         "Ruta": 'no hay ruta asignada',
          "Trainer": 'no hay trainer',
          "Area de entrenamiento": "no hay area"
          

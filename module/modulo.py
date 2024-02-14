@@ -23,7 +23,7 @@ def guardarModulo():
         
         
     info = { 
-            "codigo": input("Elija Un codigo para el modulo\n"),
+            
         "nombre_modulo": input("Elija un nombre para el modulo\n"),
         "temario": [{
 f"{'fijo' if (str(input('Ingrese los temarios')))else 'Temario'}":   
@@ -40,7 +40,7 @@ f"{'fijo' if (str(input('Ingrese los temarios')))else 'Temario'}":
     modulo.append(info)
 
 def buscarModulo():
-
+    
     system ("cls")
     print(f"""  
       ______________________
@@ -57,7 +57,7 @@ def buscarModulo():
     for i,val in enumerate(modulo):
         print(f"""
 ______________________________________
-Codigo: {val.get('codigo')}
+Codigo: {i}
 Modulo: {val.get('nombre_modulo')}
 temario: {temario}
 prioridad:{val.get('prioridad')}
@@ -78,12 +78,12 @@ def editarModulo():
 _____________________________________________
                                              |
 codigo: {codigo}                             |
-Nombre: {modulo[codigo].get('modulo')} 
+Nombre: {modulo[codigo].get('nombre_modulo')} 
 temario: {modulo[codigo].get('temario')}     |
-   |
+prioridad: {modulo[codigo].get('prioridad')}    
 _____________________________________________|
 """)
-    print("¿Este es el camper que deseas actualizar?")
+    print("¿Este es el modulo que deseas actualizar?")
     print("1. Si")
     print("2. No")
     print("3. Salir")   

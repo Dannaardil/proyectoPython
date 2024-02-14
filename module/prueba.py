@@ -96,6 +96,9 @@ ________________________________________
         'notaPractica': notaTeorica,
         'promedio': promedio
     }
+        info['notaTeorica'] = float(info['notaTeorica'])
+        info['notaPractica'] = float(info['notaPractica'])
+        info['promedio'] = float(info['promedio'])
     
     
         with open ("module/storage/prueba.json", "w") as f:
@@ -109,21 +112,21 @@ ________________________________________
                 camper[codigo]['Estado']= 'Inscrito'
                 camper[codigo]['Notaprueba']= promedio
                 with open ("module/storage/camperIns.json", "a") as E_archivos:
-                    json.dump(camperInfo,E_archivos,indent=4 ) 
-                    E_archivos.write('\n')
+                     json.dump(camperInfo,E_archivos,indent=4 ) 
+                     E_archivos.write('\n')
                 camper.pop(codigo)
                 bandera = False
         elif promedio<60:
             print("El camper no ha superado la prueba de sandbox") 
             camper[codigo]['Estado']= 'No inscrito'
             with open ("module/storage/camperNI.json", "a") as NI_archivos:
-                    json.dump(camperInfo, NI_archivos, indent=4)
+                    json.dump([camperInfo], NI_archivos, indent=4)
                     NI_archivos.write('\n')
             camper.pop(codigo)
             bandera = False
         elif (opc==3):
             bandera = False
-        with open ("module/storage/camper.json", "w") as archivo:
+    with open ("module/storage/camper.json", "w") as archivo:
          json.dump(camper, archivo, indent= 4)
         
         

@@ -1,1 +1,9 @@
-[]
+{
+    "nombre_modulo": "NODE JS",
+    "temario": [
+        {
+            "Temario": "uno"
+        }
+    ],
+    "prioridad": " baja"
+}

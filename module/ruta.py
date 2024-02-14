@@ -114,6 +114,82 @@ def asignacionRuta():
                          bandera=False
     with open ("module/storage/camperIns.json", "w") as archivo:
         json.dump(rutas, archivo, indent=4)   
+
+
+
+def asignacionRutaTrainer():
+    with open("module/storage/trainer.json", "r") as archivo:
+        trainer=json.load(archivo)
+    with open ("module/storage/rutas.json", "r") as archivo:
+        rutas= json.load(archivo)
+    bandera = True
+    while(bandera):
+        system("cls")
+        print(f"""
+             ______________________
+              
+              ASIGNACION DE RUTAS
+                   A TRAINER
+             ______________________
+            
+            """)
+        for i, val in enumerate(trainer): 
+                  print(f"""
+        codigo: {i}
+        Nombre: {val.get('Nombre')}
+        Apellidos: {val.get('Apellido')}
+        
+        Ruta: {val.get('Ruta')}
+                        
+                        
+                        """)
+        codigo = int(input("Ingrese el codigo del camper al que desea asignar un ruta:  "))
+        if codigo>=len(trainer):
+            print("codigo no valido")
+            continue
+        camperInfo = trainer
+        print(f""" 
+              codigo: {codigo}
+              Nombre: {trainer[codigo].get('Nombre')}
+              Apellido: {trainer[codigo].get('Apellido')}
+              Ruta: {trainer[codigo].get('Ruta')} 
+                           
+              """)
+        print("este es el camper que al que desea asignerle una ruta??")
+        print("1. si")
+        print("2. no")
+        print("3.salir")
+        opc = int(input())
+        if(opc==1): 
+                 for i, val in enumerate(rutas):
+                     print(f"""
+                 codigo: {i}
+                 Nombre: {val.get('Nombre')}
+                """)
+                     codigoRuta=int(input("ingrese el codigo de la ruta que desea asignar\n"))
+                     if codigoRuta>=len(rutas):
+                         print("opcion fuera de rango")
+                         continue
+                     rutaSeleccionada = rutas[codigoRuta]
+                     print(f""" 
+                            codigo: {codigo}
+                            Nombre: {rutas[codigo].get('Nombre')}
+                           """)  
+                     print("Esta es la ruta que vas a asignar?")
+                     print("1.si")
+                     print("2.No")
+                     print("3.salir")
+                     opc = int(input())
+                     if (opc==1):
+                         print("La ruta fue asignada\n")
+                         rutas[codigo]['Ruta']= rutaSeleccionada
+                         with open("module/storage/camperIns.json", "w") as archivo:
+                             json.dump(trainer, archivo, indent=4)
+                         bandera = False
+                     elif (opc==3):
+                         bandera=False
+    with open ("module/storage/trainer.json", "w") as archivo:
+        json.dump(rutas, archivo, indent=4)   
                                
 def editarRuta():          
     system ("cls")

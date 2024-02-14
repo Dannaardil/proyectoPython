@@ -10,3 +10,4 @@ estados = ["En proceso de ingreso", "Inscrito", "Aprobado","Cursando", "Graduado
 areas = []
 camperIns = []
 horario = []
+pruebaModulo = []

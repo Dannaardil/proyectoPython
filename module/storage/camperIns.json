@@ -1,42 +1,69 @@
 [
     {
-        "Nombre": "Danna",
-        "Apellido": "ARdila",
-        "Direccion": "56",
+        "Nombre": "Danna ",
+        "Apellido": "Ardila",
+        "Direccion": "cra 40",
         "Telefono": [
             {
-                "fijo": 54654
+                "fijo": 318467236
             }
         ],
         "Acudiente": "",
         "Notaprueba": 75.0,
         "Ruta": "no hay ruta asignada",
         "Trainer": "no hay trainer",
-        "Area de entrenamiento": [
-            0
-        ],
+        "Area de entrenamiento": "aun no hay area",
         "fechaInicio": "fechaInicio",
+        "modulonotaModulo": "Aun no se ha asignado la nota",
+        "notaTeoricaM": "Aun no se asignado esta nota",
+        "notaPracticaM": "Aun no se ha asignado esta nota",
         "Estado": "Inscrito",
-        "ID": "546"
+        "ID": "1098657069",
+        "horario": {
+            "Horario": "6 a 3"
+        }
     },
     {
-        "Nombre": "HSDGF",
-        "Apellido": "HBFS",
-        "Direccion": "SDJR",
+        "Nombre": "Danna ",
+        "Apellido": "Ardila",
+        "Direccion": "cra 40",
         "Telefono": [
             {
-                "fijo": 2756
+                "fijo": 318467236
             }
         ],
         "Acudiente": "",
-        "Notaprueba": 80.0,
+        "Notaprueba": 75.0,
         "Ruta": "no hay ruta asignada",
         "Trainer": "no hay trainer",
-        "Area de entrenamiento": [
-            0
-        ],
+        "Area de entrenamiento": "aun no hay area",
         "fechaInicio": "fechaInicio",
+        "modulonotaModulo": "Aun no se ha asignado la nota",
+        "notaTeoricaM": "Aun no se asignado esta nota",
+        "notaPracticaM": "Aun no se ha asignado esta nota",
         "Estado": "Inscrito",
-        "ID": "289456"
-    }
+        "ID": "1098657069"
+    },
+{
+    "Nombre": "Danna ",
+    "Apellido": "Ardila",
+    "Direccion": "cra 40",
+    "Telefono": [
+        {
+            "fijo": 318467236
+        }
+    ],
+    "Acudiente": "",
+    "Notaprueba": 75.0,
+    "Ruta": "no hay ruta asignada",
+    "Trainer": "no hay trainer",
+    "Area de entrenamiento": "aun no hay area",
+    "fechaInicio": "fechaInicio",
+    "modulonotaModulo": "Aun no se ha asignado la nota",
+    "notaTeoricaM": 70.0,
+    "notaPracticaM": 90.0,
+    "Estado": "Inscrito",
+    "ID": "1098657069",
+    "notaModulo": 82.0
+}
 ]

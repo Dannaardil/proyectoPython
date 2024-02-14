@@ -4,9 +4,9 @@ from .data import horario
 from .validate import menuNoValid
 
 def asirgnarHorario():
-    with open("moodule/storage/camperIns.json", "r") as archivo:
+    with open("module/storage/camperIns.json", "r") as archivo:
         camperIns= json.load(archivo)
-    with open("module/storage/horario.json", "r")as archivo:
+    with open("module/storage/horarios.json", "r")as archivo:
         horario = json.load(archivo)
     bandera=True
     while (bandera):
@@ -30,7 +30,7 @@ def asirgnarHorario():
                       
                       """)
         
-        codigo= int("Ingrese el codigo del camper al que le va a asignar el horario:\n")
+        codigo= int(input("Ingrese el codigo del camper al que le va a asignar el horario:\n"))
         if codigo>=len(camperIns):
             print("FUERA DE RANGO")
             continue
@@ -59,7 +59,7 @@ def asirgnarHorario():
    
                             """)
                     codigoHorario=int(input("Ingrese el codigo del horario que deseas asignar:\n"))
-                    if codigoHorario>=(horario):
+                    if codigoHorario>=len(horario):
                         print("FUERA RANGO")
                         continue
                     horaSelect= horario[codigoHorario]
@@ -85,7 +85,7 @@ def asirgnarHorario():
                     elif(opc==3):
                         bandera=False  
     with open("module/storage/camperIns.json", "w")as archivo:
-          json.dump(camperIns, archivo, ident=4)                    
+          json.dump(camperIns, archivo, indent=4)                    
 def save():
     
     system("cls")
@@ -95,10 +95,10 @@ def save():
           
           """)
     info = {
-        "Hora": input("Ingrese el horario que deseas registrar.\n")   
+        "Horario": input("Ingrese el horario que deseas registrar.\n")   
     }
     horario.append(info)
-    with open("modulo/storge/horario.json", "w" )as f: 
+    with open("module/storage/horarios.json", "w" )as f: 
         data = json.dumps(horario, indent=4)
         f.write(data)
         f.close()
@@ -144,21 +144,23 @@ ____________________________________________
     return "horario actualizado"
         
 def search():
-    system("cls")
-    print(f"""
-          
+    
+   
+    horarios_disponibles = []
+    print("""
           TODOS LOS HORARIOS -->
-          
           """)
-    for i,val in enumerate(horario):
+    for i, val in enumerate(horario):
+        horario_texto = val.get('Horario')
         print(f"""
     ______________________________
     codigo: {i}
-    Horario: {val.get('Horario')}
+    Horario: {horario_texto}
     ______________________________
-     
               """)
-    return "horarios disponibles"
+        horarios_disponibles.append(horario_texto)
+    return horarios_disponibles
+
 
 def delete():
     bandera= True
@@ -213,10 +215,14 @@ def menu():
         opc= int(input())
         match(opc):
             case 1: save()
-            case 2: search()
+            case 2: 
+                horarios = search()
+                for horario in horarios:
+                    print(horario)
             case 3: edit()
             case 4: delete()
+            case 5: asirgnarHorario()
             case 0: 
-                system("cls")
-                bandera= False
+                 system("cls")
+                 bandera= False
             case _ : menuNoValid(opc)
