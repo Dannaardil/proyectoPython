@@ -39,31 +39,32 @@
         "Area de entrenamiento": "aun no hay area",
         "fechaInicio": "fechaInicio",
         "modulonotaModulo": "Aun no se ha asignado la nota",
-        "notaTeoricaM": "Aun no se asignado esta nota",
-        "notaPracticaM": "Aun no se ha asignado esta nota",
+        "notaTeoricaM": 70.0,
+        "notaPracticaM": 90.0,
         "Estado": "Inscrito",
-        "ID": "1098657069"
+        "ID": "1098657069",
+        "notaModulo": 82.0
     },
-{
-    "Nombre": "Danna ",
-    "Apellido": "Ardila",
-    "Direccion": "cra 40",
-    "Telefono": [
-        {
-            "fijo": 318467236
-        }
-    ],
-    "Acudiente": "",
-    "Notaprueba": 75.0,
-    "Ruta": "no hay ruta asignada",
-    "Trainer": "no hay trainer",
-    "Area de entrenamiento": "aun no hay area",
-    "fechaInicio": "fechaInicio",
-    "modulonotaModulo": "Aun no se ha asignado la nota",
-    "notaTeoricaM": 70.0,
-    "notaPracticaM": 90.0,
-    "Estado": "Inscrito",
-    "ID": "1098657069",
-    "notaModulo": 82.0
-}
+    {
+        "Nombre": "e",
+        "Apellido": "e",
+        "Direccion": "e",
+        "Telefono": [
+            {
+                "fijo": 1
+            }
+        ],
+        "Acudiente": "",
+        "Notaprueba": 81.5,
+        "Ruta": "no hay ruta asignada",
+        "Trainer": "no hay trainer",
+        "Area de entrenamiento": [
+            0
+        ],
+        "fechaInicio": "fechaInicio",
+        "modulonotaModulo": "Aun no se ha asignado la nota",
+        "notaTeoricaM": "aun no se asigna esta nota",
+        "Estado": "Aprobado",
+        "ID": "1"
+    }
 ]

@@ -230,7 +230,6 @@ def menuRegistros ():
         print("\t4.Rutas(crud/asignaciones)")
         print("\t5.Modulos(crud/asignaciones) ")
         print("\t6.Horario(crud/asignaciones)")
-        print("\t7.Matricula")
         print("\t0.Salir")
         opc = int(input())
         match(opc):

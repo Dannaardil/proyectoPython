@@ -1,12 +1,9 @@
 {
-    "nombre_modulo": "fundamentos de programacion",
+    "nombre_modulo": "Hola",
     "temario": [
         {
-            "Temario": "introduccion a la algoritmia"
-        },
-        {
-            "Temario": "Pseint"
+            "Temario": "Ro"
         }
     ],
-    "prioridad": " ALTA"
+    "prioridad": ""
 }

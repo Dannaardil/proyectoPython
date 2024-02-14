@@ -3,6 +3,7 @@ import json
 from module.validate import menuNoValid
 from module.data import modulo as modulo
 from module.data import temario as temario
+import os
 
 path = "module/storage/"
 def carga():
@@ -32,26 +33,29 @@ f"{'fijo' if (str(input('Ingrese los temarios')))else 'Temario'}":
            for x in range(int(input("ingrese la cantidad de temas que va a ingresar:")))
          ],
         "prioridad": input("ingrese la prioridad")
-        }    
+        } 
+    
+    modulo.append(info)   
     with open ("module/storage/modulos.json", "w") as f:
         data = json.dumps(info, indent=4)
         f.write(data)
         f.close()
-    modulo.append(info)
+    return
 
 def buscarModulo():
+    ruta_completa = os.path.join(os.getcwd(), 'module/storage/modulos.json')
+    with open(ruta_completa, "r") as f:
+        ruta_completa = json.load(f)
     
     system ("cls")
+    print(modulo)
     print(f"""  
       ______________________
      /                     /
      /    BUSCAR MODULO    /
      /_____________________/""")
-    for i, val in enumerate(modulo):
-        temario = " "
-        for valor in val.get('temario'):
-            for key, value in valor.items():
-                temario += f" {key} = {value}"
+    
+
 
             
     for i,val in enumerate(modulo):
