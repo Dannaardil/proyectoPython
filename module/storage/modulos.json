@@ -1,9 +1,12 @@
 {
-    "nombre_modulo": "NODE JS",
+    "nombre_modulo": "fundamentos de programacion",
     "temario": [
         {
-            "Temario": "uno"
+            "Temario": "introduccion a la algoritmia"
+        },
+        {
+            "Temario": "Pseint"
         }
     ],
-    "prioridad": " baja"
+    "prioridad": " ALTA"
 }

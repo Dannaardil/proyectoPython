@@ -91,7 +91,13 @@ _____________________________________________|
     if (opc == 1): 
         info = {
            'Modulo': input("Ingrese el nombre dle modulo\n"),
-            'Temario': input("Ingrese el temario\n")       
+            'Temario':[{
+f"{'fijo' if (str(input('Ingrese los temarios')))else 'Temario'}":   
+               (input(f'temario{x+1}: '))
+        }
+           for x in range(int(input("ingrese la cantidad de temas que va a ingresar:")))
+         ], 
+            'prioridad': input("Ingrese la prioridad: ")       
                            }
         modulo[codigo] = info
         with open("module/storage/modulos.json", "w") as f:

@@ -248,19 +248,19 @@ def menuRegistros ():
            case _: menuNoValid(opc)
 
 def menu():
-      
+    
     print("""
-          BIENVENIDO A... 
+                       BIENVENIDO A... 
           
 
            _____________________________________
           |                                     |
-          |>>Seguimiento Academico CampusLands<<|
+          |>>        🌟CAMPUSLANDS🌟         <<|
           |_____________________________________|
           
           """)
-    print("\t1. Opciones de camper")
-    print("\t2. Opciones de trainer ")
+    print("\t1. Opciones de CAMPER")
+    print("\t2. Opciones de TRAINER ")
     print("\t3. Asignaciones/registros/cruds ")
     print("\t4. Modulo de reportes")
     print("\t0.Salir")
